@@ -14,7 +14,8 @@ const LoginComponent = ({
     email,
     setEmail,
     password,
-    setPassword
+    setPassword,
+    onSubmit
 }) => {
     const LoginDetail = () => {
         return (
@@ -81,6 +82,10 @@ const LoginComponent = ({
     }
 
     const LoginButton = () => {
+
+        // () => navigation.navigate('InspectionScreen')
+
+
         return (
             <View style={{ marginVertical: 43, }}>
                 <Button
@@ -88,7 +93,7 @@ const LoginComponent = ({
                     textColor={'black'}
                     title="Login"
                     borderRadius={12}
-                    onPress={() => navigation.navigate('InspectionScreen')}
+                    onPress={onSubmit}
                 />
 
             </View>)

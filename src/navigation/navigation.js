@@ -17,7 +17,7 @@ export default function Navigation(props) {
     return (
         <NavigationContainer >
             <Stack.Navigator screenOptions={{ headerShown: false }}
-            // initialRouteName={"LoginScreen"}
+             initialRouteName={"LoginScreen"}
 
             >
 
