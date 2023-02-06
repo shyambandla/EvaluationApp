@@ -19,6 +19,7 @@ export const { setAuthData} = mainSlice.actions;
 
 
 export const selectAuthData = (state) => state.main.authData;
+ 
 
 export const selectToken = (state) => state.main.authData.sessionToken;
 

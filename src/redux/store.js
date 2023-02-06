@@ -1,8 +1,9 @@
-import { configureStore, applyMiddleware } from 'redux';
+import { configureStore, applyMiddleware } from '@reduxjs/toolkit';
 
 
 // Add your reducers here
 import mainReducer from './slices/MainSlice';
+
 
 const store = configureStore({
     reducer: {

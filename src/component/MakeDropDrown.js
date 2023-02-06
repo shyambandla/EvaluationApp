@@ -6,7 +6,7 @@ import { useState } from "react";
 import DownArrow from "../assets/svg/DownArrow";
 
 
-const MakeDropDown = (props) => {
+const MyDropDown = (props) => {
 
     const [selectedLanguage, setSelectedLanguage] = useState();
     const [showButton, setShowButton] = useState(Platform.OS == 'ios' ? true : false);
@@ -78,10 +78,10 @@ const MakeDropDown = (props) => {
                 >
                     
                     {
-                    props.data.map((item) => {
+                     props.data !=undefined&& props.data.map((item) => {
                             
                             return (
-                                <Picker.Item label={item} value={item} />
+                                <Picker.Item label={item.name} value={item._id} />
 
                             )
                         })
@@ -98,4 +98,4 @@ const styles = StyleSheet.create({
         alignItems: "center"
     }
 });
-export default MakeDropDown
+export default MyDropDown

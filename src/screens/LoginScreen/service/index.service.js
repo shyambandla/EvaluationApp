@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "@reduxjs/toolkit";
+import { useDispatch, useSelector } from "react-redux";
 import { setAuthData } from "../../../redux/slices/MainSlice";
 const LoginServiceComponent = ({ children, navigation, route }) => {
 
@@ -27,17 +27,21 @@ const LoginServiceComponent = ({ children, navigation, route }) => {
 
             }).then((res) => {
                 
-                if (res.data.status == 200) {
+                if (res.status == 200) {
                     alert(res.data.message)
                    dispatch(setAuthData(res.data.data))
+                   navigation.navigate('InspectionScreen')
                 }
+             
+            
                 
             }
             ).catch((err) => {
                 console.log(err)
+                alert("invalid credentialss")
             }
             );
-            navigation.navigate('InspectionScreen')
+          
         }
 
     }
