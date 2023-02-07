@@ -78,7 +78,9 @@ const CheckComponent = ({
                     textColor={'black'}
                     title="Save"
                     borderRadius={12}
-                 onPress={() =>{setCurrentPage(currentPage + 1); }}
+                 onPress={() =>{
+                    console.log(currentPage+1,steps[currentPage+1])
+                    navigation.navigate('CheckScreen',{page:currentPage+1,headerName:steps[currentPage+1]}) }}
                 />
             </View>
 
