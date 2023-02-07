@@ -70,6 +70,12 @@ const CheckComponent = ({
 
     const sumbitEntry = () => {
         console.log("submit")
+        console.log("answers",answers)
+        
+        console.log("images",images)
+        console.log("videoUrl",videoUrl)
+        console.log("mainId",mainId)
+        console.log("reqBody",reqBody)
         axios.put(`https://evaluationapi.riolabz.com/v1/inventory/${mainId}/inspection/agent`,reqBody, {
             headers: {
                 'Authorization': `Bearer ${token}`,
