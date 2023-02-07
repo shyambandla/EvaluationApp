@@ -31,7 +31,7 @@ const ImageUploadScreen = ({ navigation, route }) => {
 
     useEffect(() => {
         
-        setImageKey(Object.keys(imageDatas[index])[0])
+        
     }, [imageDatas])
     const InputDetailView = () => {
         const token = useSelector(selectToken)
