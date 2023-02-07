@@ -381,15 +381,15 @@ const [steps,setSteps]=React.useState(["Docomentation","Exterior - Front","Exter
 
         },
     ])
-    const [data, setData] = useState(route.params.headerName == "Docomentation" ?
-        documentation : route.params.headerName == "Exterior - Front" ?
-            exterior : route.params.headerName == "Exterior - Back" ?
-                exteriorBack : route.params.headerName == "Exterior - Right" ?
-                    exteriorRight : route.params.headerName == "Exterior - Other" ?
-                        exteriorOther : route.params.headerName == "Interior AC" ?
-                            interiorAc : route.params.headerName == "Recommendation" ?
-                                recomendation : route.params.headerName == "Exterior - Left" ?
-                                    exteriorLeft : route.params.headerName == 'Interiors In Elevation' ? interiorEvaluation : [])
+    const [data, setData] = useState(steps[currentPage] == "Docomentation" ?
+        documentation : steps[currentPage] == "Exterior - Front" ?
+            exterior : steps[currentPage] == "Exterior - Back" ?
+                exteriorBack : steps[currentPage] == "Exterior - Right" ?
+                    exteriorRight : steps[currentPage] == "Exterior - Other" ?
+                        exteriorOther : steps[currentPage] == "Interior AC" ?
+                            interiorAc : steps[currentPage] == "Recommendation" ?
+                                recomendation : steps[currentPage] == "Exterior - Left" ?
+                                    exteriorLeft : steps[currentPage] == 'Interiors In Elevation' ? interiorEvaluation : [])
     return children({
         route,
         navigation,
