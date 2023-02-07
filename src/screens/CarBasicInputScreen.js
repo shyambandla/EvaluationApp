@@ -160,7 +160,7 @@ const CarBasicInputScreen = ({ navigation }) => {
     const [versionData, setVersionData] = useState([])
     const [selectedYear, setSelectedYear] = useState('')
     const [colorData, setColorData] = useState([])
-    
+
      useEffect(()=>{
         axios.get('https://evaluationapi.riolabz.com/v1/make/fetch',{ headers: {"Authorization" :`Bearer ${token}`}}).then((response)=>{     
         const data = response.data.data.filter(data=>data.name !== undefined)
@@ -189,8 +189,9 @@ const CarBasicInputScreen = ({ navigation }) => {
      },[selectedMake])
 
      useEffect(()=>{
-        if( versionData!==undefined){
-            setColorData(selectedVersion.colors)
+        if( versionData!==undefined&&selectedVersion!==undefined){
+            const colors=versionData.filter(data=>data.id===selectedVersion).colors;
+            setColorData(colors)
         }
      },[selectedVersion])
 
