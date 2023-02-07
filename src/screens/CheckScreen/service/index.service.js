@@ -433,6 +433,7 @@ const [steps,setSteps]=React.useState([])
                 const datachoice=[];
                 res.data.data.map((item)=>{
                     datachoice.push({
+                        id:item._id,
                         title:item.name,
                         buttonValues:item.choices.map((item)=>item.value),
                         selected:""

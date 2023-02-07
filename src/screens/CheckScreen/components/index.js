@@ -5,8 +5,9 @@ import { FlatList, KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, Tex
 import Header from '../../../component/Header'
 import SelectButton from '../../../component/SelectButton'
 import SimpleText from '../../../component/SimpleText'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import { selectToken } from '../../../redux/slices/MainSlice'
+import { addAnswer } from '../../../redux/slices/DataSlice'
 const CheckComponent = ({
     route,
     navigation,
@@ -19,7 +20,7 @@ const CheckComponent = ({
     isKeyboardVisible
 }) => {
 
-   
+   const dispatch = useDispatch()
 
 
     return (
@@ -53,6 +54,9 @@ const CheckComponent = ({
 
                                                         Value[index].selected = Buttonitem
                                                         setData(Value)
+                                                        dispatch(addAnswer(Value[index]))
+
+
 
                                                     }}
                                                     selected={item.selected == Buttonitem ? true : false}
