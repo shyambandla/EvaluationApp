@@ -5,6 +5,8 @@ import { FlatList, KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, Tex
 import Header from '../../../component/Header'
 import SelectButton from '../../../component/SelectButton'
 import SimpleText from '../../../component/SimpleText'
+import { useSelector } from 'react-redux'
+import { selectToken } from '../../../redux/slices/MainSlice'
 const CheckComponent = ({
     route,
     navigation,
@@ -17,6 +19,7 @@ const CheckComponent = ({
     isKeyboardVisible
 }) => {
 
+    const token = useSelector(selectToken)
 
     useEffect(() => {
         if(steps.length>0&&currentPage<steps.length-1){
