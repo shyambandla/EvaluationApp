@@ -381,10 +381,24 @@ const [steps,setSteps]=React.useState(["Docomentation","Exterior - Front","Exter
 
         },
     ])
-    const [data, setData] = useState([])
+
+
+
+
+    const [data, setData] = useState(steps[currentPage] == "Docomentation" ?
+        documentation : steps[currentPage] == "Exterior - Front" ?
+            exterior : steps[currentPage] == "Exterior - Back" ?
+                exteriorBack : steps[currentPage] == "Exterior - Right" ?
+                    exteriorRight : steps[currentPage] == "Exterior - Other" ?
+                        exteriorOther : steps[currentPage] == "Interior AC" ?
+                            interiorAc : steps[currentPage] == "Recommendation" ?
+                                recomendation : steps[currentPage] == "Exterior - Left" ?
+                                    exteriorLeft : steps[currentPage] == 'Interiors In Elevation' ? interiorEvaluation : [])
+
+    
 
     useEffect(() => {
-        if(currentPage)
+        console.log('page changed', currentPage)
         setData(steps[currentPage] == "Docomentation" ?
         documentation : steps[currentPage] == "Exterior - Front" ?
             exterior : steps[currentPage] == "Exterior - Back" ?

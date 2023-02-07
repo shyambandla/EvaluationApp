@@ -80,7 +80,7 @@ const CheckComponent = ({
                     borderRadius={12}
                  onPress={() =>{
                     console.log(currentPage+1,steps[currentPage+1])
-                    navigation.navigate('CheckScreen',{page:currentPage+1,headerName:steps[currentPage+1]}) }}
+                    setCurrentPage(currentPage+1)}}
                 />
             </View>
 
