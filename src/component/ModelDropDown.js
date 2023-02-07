@@ -43,8 +43,8 @@ const ModelDropDown = (props) => {
                     selectedValue={selectedLanguage}
                     onValueChange={(itemValue, itemIndex) => {
                         console.log(">itemValueitemValue", itemValue);
-                        setSelectedLanguage(itemValue)
-                        // props.setData(itemValue)
+                        //props.setData(itemValue)
+                         props.setData(itemValue)
                         setShowIosPicker(false)
                     }}
                     style={{
@@ -69,7 +69,7 @@ const ModelDropDown = (props) => {
                     selectedValue={selectedLanguage}
                     onValueChange={(itemValue, itemIndex) => {
                         setSelectedLanguage(itemValue)
-                        // props.setData(itemValue)
+                         props.setData(itemValue)
                     }}
                     style={{
                         //  width: "50%", backgroundColor: 'white'

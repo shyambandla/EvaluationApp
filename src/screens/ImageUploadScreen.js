@@ -9,6 +9,11 @@ import ImageButton from "../component/ImageButton"
 import MyCamera from "../component/MyCamera"
 import DeleteIcon from "../assets/svg/DeleteIcon"
 import CameraIcon from "../assets/svg/CameraIcon"
+import axios from "axios"
+import { useSelector } from "react-redux"
+import { selectToken } from "../redux/slices/MainSlice"
+import { Buffer } from 'buffer'
+import RNFetchBlob from 'rn-fetch-blob'
 const ImageUploadScreen = ({ navigation, route }) => {
     const [isCamera, setIsCamera] = useState(false)
 
@@ -19,6 +24,48 @@ const ImageUploadScreen = ({ navigation, route }) => {
 
     }, [imageData])
     const InputDetailView = () => {
+        const token = useSelector(selectToken)
+
+     
+        // base64 to blob using buffer encoding
+       
+
+
+        const uploadFile = (data) => {
+            
+
+
+
+
+            return RNFetchBlob.fetch('POST', 'https://evaluationapi.riolabz.com/v1/filemanager/images/upload', {
+    Authorization : "Bearer " + token,
+    
+    // this is required, otherwise it won't be process as a multipart/form-data request
+    'Content-Type' : 'multipart/form-data',
+  }, 
+  JSON.stringify({
+    files:[
+        // append field data from file path
+        {
+          name : 'file',
+          filename : 'avatar.png',
+          // Change BASE64 encoded data to a file path with prefix `RNFetchBlob-file://`.
+          // Or simply wrap the file path with RNFetchBlob.wrap().
+          data:  data,
+          
+        },
+        
+        // elements without property `filename` will be sent as plain text
+        
+      ],
+        imageFor: 'general'
+  })
+  )
+            
+          
+        }
+
+
         return (
 
             <View style={{
@@ -88,10 +135,17 @@ const ImageUploadScreen = ({ navigation, route }) => {
                         title="Submit"
                         borderRadius={12}
                         onPress={() => {
-                            var newData = [...imageDatas]
+                            // console.log(imageData)
+                            uploadFile(imageData).then(res => {
+                                console.log(res)
+                                var newData = [...imageDatas]
                             newData[index].image = imageData
                             setImageDatas(newData)
                             navigation.goBack()
+                            }).catch(err => {
+                               
+                                console.log(err)
+                            })
                         }}
 
                     />

@@ -121,6 +121,8 @@ import InputDetail from '../component/InputDetail'
 import Button from "../component/Button"
 import MyDropDown from "../component/MyDropDown"
 import MakeDropDown from "../component/MakeDropDrown"
+import ModelDropDown from "../component/ModelDropDown"
+import VersionDropDown from "../component/VersionDropDown"
 import axios from "axios"
 import { selectToken } from "../redux/slices/MainSlice"
 import { useSelector } from "react-redux"
@@ -143,9 +145,13 @@ const CarBasicInputScreen = ({ navigation }) => {
         '2017', '2018', '2019', '2020', '2021', '2022', '2023'])
     const [mfgMonth, setMfgMonth] = useState(['Jan', 'Feb', 'Mar', 'Apr', 'May', "Jun", 'Jul', "Aug", 'Sep', "Oct", 'Nov', 'Dec'])
     const [makeData,setMakeData] = useState([])
-
+    const [selectedMake, setSelectedMake] = useState('')
+    const [selectedModel, setSelectedModel] = useState('')
+    const [selectedVersion, setSelectedVersion] = useState('')
+    const [modelData, setModelData] = useState([])
+    const [versionData, setVersionData] = useState([])
     const [selectedYear, setSelectedYear] = useState('')
- 
+    
     
      useEffect(()=>{
         axios.get('https://evaluationapi.riolabz.com/v1/make/fetch',{ headers: {"Authorization" :`Bearer ${token}`}}).then((response)=>{     
@@ -158,14 +164,25 @@ const CarBasicInputScreen = ({ navigation }) => {
      },[])
 
      useEffect(()=>{
-        axios.get('https://evaluationapi.riolabz.com/v1/make/fetch',{ headers: {"Authorization" :`Bearer ${token}`}}).then((response)=>{     
-            const data = response.data.data.filter(data=>data.name !== undefined)
-            setMakeData(data)
-            console.log(data,"avddd")
+        axios.get(`https://evaluationapi.riolabz.com/v1/model/fetch?makeIds=${selectedMake}`,{ headers: {"Authorization" :`Bearer ${token}`}}).then((response)=>{     
+            const data = response.data.data
+            setModelData(data)
+            console.log(data,"avdddtf")
            }).catch((error)=>{
-               console.log(error)
+               console.log(error,"error model")
            })
-     },[])
+     },[selectedMake])
+
+     useEffect(()=>{
+        console.log(selectedModel,"selectedModel")
+        axios.get(`https://evaluationapi.riolabz.com/v1/version/fetch?modelIds=${selectedModel}`,{ headers: {"Authorization" :`Bearer ${token}`}}).then((response)=>{     
+            const data = response.data.data
+            setVersionData(data)
+            console.log(data,"avdddtf")
+           }).catch((error)=>{
+               console.log(error,"error version")
+           })
+     },[selectedModel])
 
     
     const InputDetailView = () => {
@@ -178,23 +195,23 @@ const CarBasicInputScreen = ({ navigation }) => {
                     textInputValue={registerNumber}
                 />
                 <View style={{ marginTop: 12 }} />
-           
+                <View style={{ marginTop: 12, flexDirection: 'row', justifyContent: 'space-between' }} >
+                       <MakeDropDown title={'Make'} data={makeData} setData={setSelectedMake} /> 
+                      
+                </View>
+                <View style={{ marginTop: 12, flexDirection: 'row', justifyContent: 'space-between' }} >
+                      
+                       <ModelDropDown title={'Model*'} data={modelData} setData={setSelectedModel} />    
+                </View>
                 <View style={{ marginTop: 12, flexDirection: 'row', justifyContent: 'space-between' }} >
                     <MyDropDown title={'Mfg Year'} data={mfgYear} setData={setSelectedYear} />
                     <MyDropDown title={'Mfg Month'} data={mfgMonth} setData={setMfgMonth} />
                 </View>
                  
-                <View style={{ marginTop: 12, flexDirection: 'row', justifyContent: 'space-between' }} >
-                       <MakeDropDown title={'Make'} data={makeData} setData={setSelectedYear} /> 
-                       <MakeDropDown title={'Model*'} data={makeData} setData={setSelectedYear} />    
-                </View>
+                
                 
                 <View style={{ marginTop: 12 }} />
-                <InputDetail
-                    textInputTitle={'Version*'}
-                    textInputValueChange={(value) => { seVersion(value) }}
-                    textInputValue={version}
-                />
+                <VersionDropDown title={'Version*'} data={versionData} setData={setSelectedVersion} />    
                 <View style={{ marginTop: 12 }} />
                 <InputDetail
                     textInputTitle={'Color*'}
@@ -226,7 +243,7 @@ const CarBasicInputScreen = ({ navigation }) => {
                         textColor={'black'}
                         title="Add Stock"
                         borderRadius={12}
-                        onPress={() => navigation.navigate('InspectionScreen')}
+                        onPress={() => navigation.navigate('VehicleImagesScreen')}
 
                     />
                 </View>

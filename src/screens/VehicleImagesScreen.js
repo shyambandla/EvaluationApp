@@ -8,7 +8,14 @@ import ImageButton from "../component/ImageButton"
 import MyCamera from "../component/MyCamera"
 import VehicaleImageComponent from "../component/VehicaleImageComponent"
 import Button from "../component/Button"
+import { useSelector } from "react-redux"
+import { selectToken } from "../redux/slices/MainSlice"
 const VehicleImagesScreen = ({ navigation }) => {
+
+   
+
+
+
     const [imageData, setImageData] = useState([
         {
             name: 'Front View',
@@ -65,6 +72,7 @@ const VehicleImagesScreen = ({ navigation }) => {
         }
 
     ])
+
 
 
 

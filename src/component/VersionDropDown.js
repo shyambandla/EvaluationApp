@@ -6,9 +6,9 @@ import { useState } from "react";
 import DownArrow from "../assets/svg/DownArrow";
 
 
-const MyDropDown = (props) => {
+const VersionDropDown = (props) => {
 
-     const [selectedLanguage, setSelectedLanguage] = useState();
+    const [selectedLanguage, setSelectedLanguage] = useState();
     const [showButton, setShowButton] = useState(Platform.OS == 'ios' ? true : false);
     const [showIosPicker, setShowIosPicker] = useState(false);
 
@@ -30,7 +30,7 @@ const MyDropDown = (props) => {
                         justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center'
                     }} >
                     <SimpleText
-                        text={props.selecteddat}
+                        text={selectedLanguage}
                         Style={{
                             color: '#8A8A8A', marginBottom: 5,
                         }}
@@ -44,7 +44,7 @@ const MyDropDown = (props) => {
                     onValueChange={(itemValue, itemIndex) => {
                         console.log(">itemValueitemValue", itemValue);
                         setSelectedLanguage(itemValue)
-                         props.setData(itemValue)
+                        // props.setData(itemValue)
                         setShowIosPicker(false)
                     }}
                     style={{
@@ -55,7 +55,7 @@ const MyDropDown = (props) => {
                     {
                         props.data.map((item) => {
                             return (
-                                <Picker.Item label={item} value={item} />
+                                <Picker.Item label={item.name} value={item._id} key={item._id} />
 
                             )
                         })
@@ -69,7 +69,7 @@ const MyDropDown = (props) => {
                     selectedValue={selectedLanguage}
                     onValueChange={(itemValue, itemIndex) => {
                         setSelectedLanguage(itemValue)
-                         props.setData(itemValue)
+                        // props.setData(itemValue)
                     }}
                     style={{
                         //  width: "50%", backgroundColor: 'white'
@@ -78,10 +78,10 @@ const MyDropDown = (props) => {
                 >
                     
                     {
-                     props.data !=undefined&& props.data.map((item) => {
+                    props.data.map((item) => {
                             
                             return (
-                                <Picker.Item label={item.name} value={item._id} />
+                                <Picker.Item label={item.name} value={item._id} key={item._id} />
 
                             )
                         })
@@ -98,4 +98,4 @@ const styles = StyleSheet.create({
         alignItems: "center"
     }
 });
-export default MyDropDown
+export default VersionDropDown
