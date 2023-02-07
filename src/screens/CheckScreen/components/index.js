@@ -39,6 +39,10 @@ const CheckComponent = ({
                 setData(datachoice)
                 
             }
+            ).catch((err)=>{
+                console.log(err)
+                setData([])
+            }
             )
         }
     }, [steps,currentPage])
