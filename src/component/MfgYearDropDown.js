@@ -71,7 +71,7 @@ const MfgYearDropdown = (props) => {
                     onValueChange={(itemValue, itemIndex) => {
                         setSelectedLanguage(itemValue)
                         // props.setData(itemValue)
-                        dispatch(setMfgYear(itemValue))
+                        dispatch(setMfgYear(props.data[itemIndex]))
                     }}
                     style={{
                         //  width: "50%", backgroundColor: 'white'

@@ -83,7 +83,7 @@ import {setRegistrationNo,setMake,setModel,setMfgYear,setMfgMonth,setVersion,set
                     onValueChange={(itemValue, itemIndex) => {
                         setSelectedLanguage(itemValue)
                          props.setData(itemValue)
-                       dispatch(setMake(itemValue))
+                       dispatch(setMake(props.data[itemIndex].name))
                     }}
                     style={{
                         //  width: "50%", backgroundColor: 'white'

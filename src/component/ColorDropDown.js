@@ -55,8 +55,9 @@ useEffect(() => {
                     onValueChange={(itemValue, itemIndex) => {
                         console.log(">itemValueitemValue", itemValue);
                         setSelectedLanguage(itemValue)
-                        // props.setData(itemValue)
+                         props.setData(itemValue)
                         setShowIosPicker(false)
+                        dispatch(setColor(props.data[itemIndex].name))
                     }}
                     style={{
                         marginTop: -40
@@ -82,9 +83,9 @@ useEffect(() => {
                     selectedValue={selectedLanguage}
                     onValueChange={(itemValue, itemIndex) => {
                         setSelectedLanguage(itemValue)
-                        // props.setData(itemValue)
+                         props.setData(itemValue)
                         console.log(itemValue,"color data")
-                        dispatch(setColor(itemValue))
+                        dispatch(setColor(props.data[itemIndex].name))
                     }}
                     style={{
                         //  width: "50%", backgroundColor: 'white'

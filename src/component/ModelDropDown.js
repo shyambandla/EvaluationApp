@@ -84,7 +84,8 @@ const ModelDropDown = (props) => {
                     onValueChange={(itemValue, itemIndex) => {
                         setSelectedLanguage(itemValue)
                          props.setData(itemValue)
-                         dispatch(setModel(itemValue))
+                         dispatch(setModel(props.data[itemIndex].name))
+                         console.log(itemValue,"model dropdown")
                     }}
                     style={{
                         //  width: "50%", backgroundColor: 'white'

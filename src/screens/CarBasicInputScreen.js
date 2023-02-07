@@ -287,7 +287,7 @@ const CarBasicInputScreen = ({ navigation }) => {
                                 Color ,
                                 NumberOfOwner ,
                                 RegistrationDate ,
-                                OdometerReading )
+                                OdometerReading ,"checking data")
                             navigation.navigate('VehicleImagesScreen')}}
 
                     />

@@ -72,7 +72,7 @@ const MfgMonthDropdown = (props) => {
                     onValueChange={(itemValue, itemIndex) => {
                         setSelectedLanguage(itemValue)
                         // props.setData(itemValue)
-                        dispatch(setMfgMonth(itemValue))
+                        dispatch(setMfgMonth(props.data[itemIndex]))
                     }}
                     style={{
                         //  width: "50%", backgroundColor: 'white'
