@@ -2,7 +2,7 @@ import { TextInput, View, StyleSheet, Text, TouchableOpacity, Platform } from "r
 import SimpleText from "./SimpleText"
 //import { Dropdown } from 'react-native-material-dropdown';
 import { Picker } from '@react-native-picker/picker';
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import DownArrow from "../assets/svg/DownArrow";
 import { useDispatch, useSelector } from "react-redux"
 import {setRegistrationNo,setMake,setModel,setMfgYear,setMfgMonth,setVersion,setColor,setNumberOfOwner,setRegistrationDate,setOdometerReading} from '../redux/slices/BasicCarDetailsSlice';
@@ -64,8 +64,10 @@ useEffect(() => {
                     mode={'dropdown'}
                 >
                     {
-                        props.data.map((item) => {
+                     props.data !=undefined&& props.data.map((item) => {
+                            
                             return (
+                                // <Picker.Item label={item.name} value={`${item._id}|${item.name}`} />
                                 <Picker.Item label={item.name} value={item._id} />
 
                             )
@@ -90,10 +92,12 @@ useEffect(() => {
                     mode={'dropdown'}
                 >
                     
+                   
                     {
-                    props.data.map((item) => {
+                     props.data !=undefined&& props.data.map((item) => {
                             
                             return (
+                                // <Picker.Item label={item.name} value={`${item._id}|${item.name}`} />
                                 <Picker.Item label={item.name} value={item._id} />
 
                             )

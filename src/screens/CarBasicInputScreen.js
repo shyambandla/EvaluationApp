@@ -189,7 +189,7 @@ const CarBasicInputScreen = ({ navigation }) => {
      },[selectedMake])
 
      useEffect(()=>{
-        if(selectedVersion.colors!==undefined){
+        if( versionData!==undefined){
             setColorData(selectedVersion.colors)
         }
      },[selectedVersion])
@@ -238,7 +238,7 @@ const CarBasicInputScreen = ({ navigation }) => {
                 <VersionDropDown title={'Version*'} data={versionData} setData={setSelectedVersion} />    
                 <View style={{ marginTop: 12 }} />
             
-             <ColorDropDown title={'Color*'} data={colorData} setData={setNoOweners} />
+             <ColorDropDown title={'Color*'} data={colorData} setData={setColorData} />
 
                 <View style={{ marginTop: 12 }} />
             
@@ -264,8 +264,7 @@ const CarBasicInputScreen = ({ navigation }) => {
                         title="Add Stock"
                         borderRadius={12}
                         onPress={() =>{
-                            
-                             navigation.navigate('VehicleImagesScreen')}}
+                            navigation.navigate('VehicleImagesScreen')}}
 
                     />
                 </View>
