@@ -53,9 +53,10 @@ const ModelDropDown = (props) => {
                     mode={'dropdown'}
                 >
                     {
-                        props.data.map((item) => {
+                     props.data !=undefined&& props.data.map((item) => {
+                            
                             return (
-                                <Picker.Item label={item} value={item} />
+                                <Picker.Item label={item.name} value={item._id} />
 
                             )
                         })

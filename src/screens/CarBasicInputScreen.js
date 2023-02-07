@@ -123,6 +123,9 @@ import MyDropDown from "../component/MyDropDown"
 import MakeDropDown from "../component/MakeDropDrown"
 import ModelDropDown from "../component/ModelDropDown"
 import VersionDropDown from "../component/VersionDropDown"
+import MfgYearDropdown from "../component/MfgYearDropDown"
+import MfgMonthDropdown from "../component/MfgMonthDropDown";
+import NoOfOwnersDropdown from "../component/NoOfOwnersDropDown"
 import axios from "axios"
 import { selectToken } from "../redux/slices/MainSlice"
 import { useSelector } from "react-redux"
@@ -166,6 +169,7 @@ const CarBasicInputScreen = ({ navigation }) => {
      },[])
 
      useEffect(()=>{
+        console.log(selectedMake,"selectedMake")
         axios.get(`https://evaluationapi.riolabz.com/v1/model/fetch?makeIds=${selectedMake}`,{ headers: {"Authorization" :`Bearer ${token}`}}).then((response)=>{     
             const data = response.data.data
             setModelData(data)
@@ -176,11 +180,11 @@ const CarBasicInputScreen = ({ navigation }) => {
      },[selectedMake])
 
      useEffect(()=>{
-        console.log(selectedModel,"selectedModel")
+       
         axios.get(`https://evaluationapi.riolabz.com/v1/version/fetch?modelIds=${selectedModel}`,{ headers: {"Authorization" :`Bearer ${token}`}}).then((response)=>{     
             const data = response.data.data
             setVersionData(data)
-            console.log(data,"avdddtf")
+            console.log(data,"version useEffect")
            }).catch((error)=>{
                console.log(error,"error version")
            })
@@ -206,8 +210,8 @@ const CarBasicInputScreen = ({ navigation }) => {
                        <ModelDropDown title={'Model*'} data={modelData} setData={setSelectedModel} />    
                 </View>
                 <View style={{ marginTop: 12, flexDirection: 'row', justifyContent: 'space-between' }} >
-                    <MyDropDown title={'Mfg Year'} data={mfgYear} setData={setSelectedYear} />
-                    <MyDropDown title={'Mfg Month'} data={mfgMonth} setData={setMfgMonth} />
+                    <MfgYearDropdown title={'Mfg Year'} data={mfgYear} setData={setSelectedYear} />
+                    <MfgMonthDropdown title={'Mfg Month'} data={mfgMonth} setData={setMfgMonth} />
                 </View>
                  
                 
@@ -222,7 +226,7 @@ const CarBasicInputScreen = ({ navigation }) => {
                 />
                 <View style={{ marginTop: 12 }} />
             
-                                    <MyDropDown title={'Number of Owner*'} data={noOwners} setData={setNoOweners} />
+                <NoOfOwnersDropdown title={'Number of Owner*'} data={noOwners} setData={setNoOweners} />
 
                 <View style={{ marginTop: 12 }} />
                 <InputDetail

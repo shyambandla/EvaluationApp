@@ -6,7 +6,7 @@ import { useState } from "react";
 import DownArrow from "../assets/svg/DownArrow";
 
 
-const MakeDropDown = (props) => {
+const NoOfOwnersDropdown = (props) => {
 
     const [selectedLanguage, setSelectedLanguage] = useState();
     const [showButton, setShowButton] = useState(Platform.OS == 'ios' ? true : false);
@@ -99,4 +99,4 @@ const styles = StyleSheet.create({
         alignItems: "center"
     }
 });
-export default MakeDropDown
+export default NoOfOwnersDropdown
