@@ -63,5 +63,5 @@ export const selectColor = (state) => state.basicCarDetails.color;
 export const selectNumberOfOwner = (state) => state.basicCarDetails.numberOfOwners;
 export const selectRegistrationDate = (state) => state.basicCarDetails.registrationDate;
 export const selectOdometerReading = (state) => state.basicCarDetails.odometerReading;
-
+export const selectBasicCarDetails = (state) => state.basicCarDetails;
 export default BasicCarDetailSlice.reducer;
