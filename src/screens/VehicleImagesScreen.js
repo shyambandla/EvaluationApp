@@ -13,12 +13,16 @@ import { selectToken } from "../redux/slices/MainSlice"
 import { selectImages } from "../redux/slices/ImagesSlice"
 const VehicleImagesScreen = ({ navigation }) => {
 
+
+    useEffect(() =>{
+        console.log(images)
+    },[images])
    
 
     const images=useSelector(selectImages)
 
 
-    const [imageData, setImageData] = useState(images!==undefined?images:[])
+    const [imageData, setImageData] = useState([])
 
    
 
