@@ -204,6 +204,7 @@ const InspectionCompleteScreen = ({ navigation }) => {
                         data={carDetails}
                         showsVerticalScrollIndicator={false}
                         renderItem={({item}) => {
+                            console.log(item)
                             if(item.assignedTo ==undefined){ 
                                return (<></>)
                             }else{
@@ -217,14 +218,13 @@ const InspectionCompleteScreen = ({ navigation }) => {
                                      Month={monthNames[new Date(item.createdAt).getMonth()+1]}
                                
                                    
-                                    //  time={new Date(item.createdAt).getHours()+':'+new Date(item.createdAt).getMinutes()}
-                                    time={new Date(item.createdAt).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
+                                     time={new Date(item.createdAt).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
                                     userName={item.assignedTo.username}
-                                    // model={item.model}
-                                       model={item.model.name}
-                                    // carName={item.carName}
-                                 carName={item.version.name}
-                                    // location={item.location}
+                             
+                                //        model={item.model.name}
+                             
+                                //  carName={item.version.name}
+                                 
                                     location={"no location"}
                                      onCheckInPress={() => navigation.navigate("InspectBasicCarDetail")}
                                     onPressUpdate={() => navigation.navigate("CarBasicInputScreen")}
