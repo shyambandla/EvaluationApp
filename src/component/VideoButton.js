@@ -47,7 +47,7 @@ export default VideoButton = async (setImageData, imageData, index,token,uploadF
         uploadFile(image).then(res => {
             console.log("res", res);
 
-            const url=res.data[0]
+            const url=res.data.data
             console.log("url", url);
             saveVideoUrl(url)
             // dispatch(setVideoUrl(url))
