@@ -8,12 +8,15 @@ const CheckComponent = ({
     navigation,
     data,
     setData, 
+    setCurrentPage,
+        currentPage,
+        setSteps,
+        steps,
     isKeyboardVisible
 }) => {
 
 
-    const [steps,setSteps]=React.useState(["Docomentation","Exterior - Front","Exterior - Back","Exterior - Right","Exterior - Other"])
-    const [currentPage,setCurrentPage]=React.useState(route.params.page)
+    
 
 
     return (

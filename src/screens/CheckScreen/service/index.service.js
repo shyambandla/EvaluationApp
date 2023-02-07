@@ -5,6 +5,11 @@ const CheckServiceComponent = ({ children, navigation, route }) => {
 useEffect(() => {
     console.log(route.params.page)
 },[])
+
+const [steps,setSteps]=React.useState(["Docomentation","Exterior - Front","Exterior - Back","Exterior - Right","Exterior - Other"])
+    const [currentPage,setCurrentPage]=React.useState(route.params.page)
+
+
     useEffect(() => {
         const keyboardDidShowListener = Keyboard.addListener(
             'keyboardDidShow',
@@ -389,7 +394,11 @@ useEffect(() => {
         route,
         navigation,
         data,
-        setData
+        setData,
+        setCurrentPage,
+        currentPage,
+        setSteps,
+        steps
         , isKeyboardVisible
     });
 
