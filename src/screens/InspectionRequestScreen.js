@@ -115,11 +115,13 @@ import CarRequest from "../component/CarRequest"
 import FilterModal from "../component/FilterModal"
 import Header from "../component/Header"
 import axios from "axios"
-import { useSelector } from "react-redux"
+import { useSelector,useDispatch } from "react-redux"
 import { selectToken } from "../redux/slices/MainSlice"
+import { setMainId } from "../redux/slices/MainSlice"
 
 const InspectionCompleteScreen = ({ navigation }) => {
     const token =useSelector(selectToken)
+    const dispatch = useDispatch()
     
     const [carDetails, setCarDetails] = useState([{
         day: 'MON',
@@ -227,7 +229,10 @@ const InspectionCompleteScreen = ({ navigation }) => {
                                  
                                     location={item.inspectionVenue.location}
                                      onCheckInPress={() => navigation.navigate("InspectBasicCarDetail")}
-                                    onPressUpdate={() => navigation.navigate("CarBasicInputScreen")}
+                                    onPressUpdate={() => {
+                                        dispatch(setMainId(item._id))
+                                        navigation.navigate("CarBasicInputScreen")
+                                    }}
                                 />
                                 <View style={{ marginBottom: 12 }} />
                             </>
