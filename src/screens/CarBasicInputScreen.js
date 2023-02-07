@@ -162,6 +162,9 @@ const CarBasicInputScreen = ({ navigation }) => {
         axios.get('https://evaluationapi.riolabz.com/v1/make/fetch',{ headers: {"Authorization" :`Bearer ${token}`}}).then((response)=>{     
         const data = response.data.data.filter(data=>data.name !== undefined)
         setMakeData(data)
+       
+            setSelectedMake(data[0].id)
+       
         console.log(data,"avddd")
        }).catch((error)=>{
            console.log(error)
@@ -173,6 +176,9 @@ const CarBasicInputScreen = ({ navigation }) => {
         axios.get(`https://evaluationapi.riolabz.com/v1/model/fetch?makeIds=${selectedMake}`,{ headers: {"Authorization" :`Bearer ${token}`}}).then((response)=>{     
             const data = response.data.data
             setModelData(data)
+            
+                setSelectedModel(data[0].id)
+            
             console.log(data,"avdddtf")
            }).catch((error)=>{
                console.log(error,"error model")
@@ -184,6 +190,9 @@ const CarBasicInputScreen = ({ navigation }) => {
         axios.get(`https://evaluationapi.riolabz.com/v1/version/fetch?modelIds=${selectedModel}`,{ headers: {"Authorization" :`Bearer ${token}`}}).then((response)=>{     
             const data = response.data.data
             setVersionData(data)
+           
+                setSelectedVersion(data[0].id)
+            
             console.log(data,"version useEffect")
            }).catch((error)=>{
                console.log(error,"error version")
