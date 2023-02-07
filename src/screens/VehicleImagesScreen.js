@@ -19,6 +19,8 @@ const VehicleImagesScreen = ({ navigation }) => {
         
         setImageData(imgs)
 
+        console.log(imgs)
+
     },[images])
    
 
@@ -57,7 +59,8 @@ return finalResult;
                             ImagePress={() => navigation.navigate("ImageUploadScreen", {
                                 index: index,
                                 imageDatas: imageData,
-                                setImageDatas: setImageData
+                                setImageDatas: setImageData,
+                                imageKey:Object.keys(images)[index]
 
                             })}
                             DeletePicture={() => {

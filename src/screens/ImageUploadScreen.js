@@ -10,15 +10,20 @@ import MyCamera from "../component/MyCamera"
 import DeleteIcon from "../assets/svg/DeleteIcon"
 import CameraIcon from "../assets/svg/CameraIcon"
 import axios from "axios"
-import { useSelector } from "react-redux"
+import { useSelector,useDispatch } from "react-redux"
 import { selectToken } from "../redux/slices/MainSlice"
 import { Buffer } from 'buffer'
 import RNFetchBlob from 'rn-fetch-blob'
+import { setUrl } from "../redux/slices/ImagesSlice"
 const ImageUploadScreen = ({ navigation, route }) => {
     const [isCamera, setIsCamera] = useState(false)
 
+
+    const dispatch = useDispatch()
+
+
     const [imageData, setImageData] = useState('')
-    const { index, setImageDatas, imageDatas } = route.params
+    const { index, setImageDatas, imageDatas,imageKey } = route.params
 
     useEffect(() => {
 
@@ -156,6 +161,7 @@ const ImageUploadScreen = ({ navigation, route }) => {
                                 var newData = [...imageDatas]
                             newData[index].image = res.data.data[0]
                             setImageDatas(newData)
+                            dispatch(setUrl({key:imageKey,value:res.data.data[0]}))
                             navigation.goBack()
                             }).catch(err => {
                                

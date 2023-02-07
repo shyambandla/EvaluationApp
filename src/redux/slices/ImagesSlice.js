@@ -112,7 +112,7 @@ export const imagesSlice = createSlice({
     },
 });
 
-export const { setImages} = imagesSlice.actions;
+export const { setImages,setUrl} = imagesSlice.actions;
 
 export const selectImages = (state) => state.images.images;
 
