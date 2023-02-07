@@ -155,7 +155,7 @@ const CheckComponent = ({
                     title="Save"
                     borderRadius={12}
                  onPress={() =>{
-                    console.log(currentPage+1,steps[currentPage+1].title)
+                    // console.log(currentPage+1,steps[currentPage+1].title)
                     if(currentPage+1==steps.length){
                         sumbitEntry();
                     }else{
