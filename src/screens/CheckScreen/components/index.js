@@ -75,8 +75,35 @@ const CheckComponent = ({
         console.log("images",images)
         console.log("videoUrl",videoUrl)
         console.log("mainId",mainId)
-        console.log("reqBody",reqBody)
-        axios.put(`https://evaluationapi.riolabz.com/v1/inventory/${mainId}/inspection/agent`,reqBody, {
+        let body={}
+        if(answers!=undefined&&images!=undefined&&videoUrl!=undefined&&mainId!=undefined&&basicCarDetails!=undefined){
+            console.log("answers",answers)
+            
+            console.log("images",images)
+            console.log("videoUrl",videoUrl)
+            console.log("mainId",mainId)
+            const body={vehicleDetail:{
+                registrationNumber:basicCarDetails.registrationNumber,
+                registrationDate:basicCarDetails.registrationDate,
+                mfgYear:basicCarDetails.mfgYear,
+                mfgMonth:basicCarDetails.mfgMonth,
+                numberOfOwners:basicCarDetails.numberOfOwners,
+                chasisNumber:"",
+                engineNumber:"",
+            },
+            versionId:"",
+            colorId:"",
+            images:images,
+            details:[...answers],
+            inspectionVideo:videoUrl,
+    
+            }
+    
+            setReqBody(body)
+        }
+        console.log("reqBody",body)
+
+        axios.put(`https://evaluationapi.riolabz.com/v1/inventory/${mainId}/inspection/agent`,body, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
