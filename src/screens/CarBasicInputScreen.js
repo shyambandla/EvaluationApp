@@ -190,7 +190,7 @@ const CarBasicInputScreen = ({ navigation }) => {
 
      useEffect(()=>{
         if( versionData!==undefined&&selectedVersion!==undefined){
-            const colors=versionData.filter(data=>data._id===selectedVersion).colors;
+            const colors = versionData.filter(data=>data._id === selectedVersion)[0].colors
             setColorData(colors)
             console.log(colors,"colors")
         }
