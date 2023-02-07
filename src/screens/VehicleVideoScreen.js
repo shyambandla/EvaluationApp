@@ -10,7 +10,13 @@ import VehicaleVideoComponent from "../component/VehicaleVideoComponent"
 import Button from "../component/Button"
 import PlayButtonIcon from "../assets/svg/PlayButtonIcon"
 import VideoButton from "../component/VideoButton"
+import { useSelector } from "react-redux"
+import { selectToken } from "../redux/slices/MainSlice"
+import axios from "axios"
 const VehicleVideoScreen = ({ navigation }) => {
+
+    const token = useSelector(selectToken);
+
     const [imageData, setImageData] = useState([
         {
             name: 'Front View',
@@ -67,6 +73,60 @@ const VehicleVideoScreen = ({ navigation }) => {
         }
 
     ])
+
+
+
+    const uploadFile = (data) => {
+            
+        // read file from uri post request
+
+
+        const formData = new FormData();
+        // re
+        formData.append('file', data);
+        formData.append('videoFor', 'general');
+        
+      
+       return axios.post('https://evaluationapi.riolabz.com/v1/filemanager/video/upload', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': 'Bearer ' + token
+            }
+        });  
+
+//             return RNFetchBlob.fetch('POST', 'https://evaluationapi.riolabz.com/v1/filemanager/images/upload', {
+//     Authorization : "Bearer " + token,
+
+//     // this is required, otherwise it won't be process as a multipart/form-data request
+//     'Content-Type' : 'multipart/form-data',
+//   }, 
+//   JSON.stringify({
+//     files:[
+//         // append field data from file path
+//         {
+//           name : 'file',
+//           filename : 'avatar.png',
+//           // Change BASE64 encoded data to a file path with prefix `RNFetchBlob-file://`.
+//           // Or simply wrap the file path with RNFetchBlob.wrap().
+//           data:  data,
+      
+//         },
+    
+//         // elements without property `filename` will be sent as plain text
+    
+//       ],
+//         imageFor: 'general'
+//   })
+//   )
+        
+      
+    }
+
+
+
+
+
+
     const InputDetailView = () => {
         return (<View style={{
             backgroundColor: '#FFFFFF', paddingTop: 25, paddingHorizontal: 26,
@@ -77,6 +137,11 @@ const VehicleVideoScreen = ({ navigation }) => {
                 numColumns={2}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item, index }) => {
+
+
+
+
+
                     return (
                         <VehicaleVideoComponent
                             text={item.name}
@@ -84,7 +149,7 @@ const VehicleVideoScreen = ({ navigation }) => {
                             index={index}
                             isPlay
                             OnPlayPress={() => Linking.openURL('http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4')}
-                            VideoPress={() => { VideoButton(setImageData, imageData, index) }}
+                            VideoPress={() => { VideoButton(setImageData, imageData, index,token,uploadFile) }}
                         />
 
 

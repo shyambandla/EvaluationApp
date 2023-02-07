@@ -33,34 +33,49 @@ const ImageUploadScreen = ({ navigation, route }) => {
 
         const uploadFile = (data) => {
             
+            // read file from uri post request
 
 
-
-
-            return RNFetchBlob.fetch('POST', 'https://evaluationapi.riolabz.com/v1/filemanager/images/upload', {
-    Authorization : "Bearer " + token,
-    
-    // this is required, otherwise it won't be process as a multipart/form-data request
-    'Content-Type' : 'multipart/form-data',
-  }, 
-  JSON.stringify({
-    files:[
-        // append field data from file path
-        {
-          name : 'file',
-          filename : 'avatar.png',
-          // Change BASE64 encoded data to a file path with prefix `RNFetchBlob-file://`.
-          // Or simply wrap the file path with RNFetchBlob.wrap().
-          data:  data,
+            const formData = new FormData();
+            // re
+            formData.append('files', {
+                uri: data,
+                type: 'image/jpeg',
+                name: 'avatar.jpeg',
+            });
+            
           
-        },
+           return axios.post('https://evaluationapi.riolabz.com/v1/filemanager/images/upload', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': 'Bearer ' + token
+                }
+            });  
+
+//             return RNFetchBlob.fetch('POST', 'https://evaluationapi.riolabz.com/v1/filemanager/images/upload', {
+//     Authorization : "Bearer " + token,
+    
+//     // this is required, otherwise it won't be process as a multipart/form-data request
+//     'Content-Type' : 'multipart/form-data',
+//   }, 
+//   JSON.stringify({
+//     files:[
+//         // append field data from file path
+//         {
+//           name : 'file',
+//           filename : 'avatar.png',
+//           // Change BASE64 encoded data to a file path with prefix `RNFetchBlob-file://`.
+//           // Or simply wrap the file path with RNFetchBlob.wrap().
+//           data:  data,
+          
+//         },
         
-        // elements without property `filename` will be sent as plain text
+//         // elements without property `filename` will be sent as plain text
         
-      ],
-        imageFor: 'general'
-  })
-  )
+//       ],
+//         imageFor: 'general'
+//   })
+//   )
             
           
         }
@@ -76,7 +91,7 @@ const ImageUploadScreen = ({ navigation, route }) => {
                 {imageData ?
                     <View style={{ flex: 1 }}>
                         <Image
-                            source={{ uri: `data:image/png;base64,${imageData}` }}
+                            source={{ uri: imageData }}
                             style={[{ flex: 1 }, {
                                 transform: [{ rotate: '90deg' }],
                             }]}
@@ -139,7 +154,7 @@ const ImageUploadScreen = ({ navigation, route }) => {
                             uploadFile(imageData).then(res => {
                                 console.log(res)
                                 var newData = [...imageDatas]
-                            newData[index].image = imageData
+                            newData[index].image = res.data.data[0]
                             setImageDatas(newData)
                             navigation.goBack()
                             }).catch(err => {

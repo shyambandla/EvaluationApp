@@ -53,9 +53,10 @@ export default ImageButton = async (setImageData) => {
 
         const image = response.assets[0];
         console.log("image.uriimage.uriimage.uriimage.uri", image);
-        ImgToBase64.getBase64String(image.uri)
-            .then(base64String => setImageData(base64String))
-            .catch(err => { });
+        // ImgToBase64.getBase64String(image.uri)
+        //     .then(base64String => setImageData(base64String))
+        //     .catch(err => { });
+         setImageData(image.uri)
 
         //props.setIsCamera(false)
     }

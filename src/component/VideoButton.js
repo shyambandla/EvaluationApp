@@ -4,15 +4,27 @@ import CameraIcon from '../assets/svg/CameraIcon'
 import { launchCamera, launchImageLibrary, } from 'react-native-image-picker';
 import ImgToBase64 from 'react-native-image-base64';
 import RNFS from 'react-native-fs';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { selectToken } from '../redux/slices/MainSlice';
 
-export default VideoButton = async (setImageData, imageData, index) => {
+export default VideoButton = async (setImageData, imageData, index,token,uploadFile) => {
     const options = {
         title: 'Select video',
         mediaType: 'video',
         path: 'video',
         quality: 3,
-        includeBase64: true
+        
+
     };
+
+   
+
+   
+
+
+
+    
     const response = await launchCamera(options);
     // ImagePicker.showImagePicker
     console.log('Response = ', response);
@@ -31,13 +43,20 @@ export default VideoButton = async (setImageData, imageData, index) => {
         console.log("image.uriimage.uriimage.uriimage.uri", image.uri);
         // const path = `${RNFS.DocumentDirectoryPath
         //     }/${"attachment"}.mp4`;
-        RNFS.writeFile(image.uri, base64Content, 'base64')
-            .then(success => {
-                console.log('FILE WRITTEN: ', success)
-            })
-            .catch(err => {
-                console.log('File Write Error: ', err.message)
-            })
+        console.log("image.uriimage.uriimage.uriimage.uri", image.uri);
+        uploadFile(image).then(res => {
+            console.log("res", res);
+
+        }).catch(err => {
+            console.log("err", err);
+        })
+        // RNFS.writeFile(image.uri, base64Content, 'base64')
+        //     .then(success => {
+        //         console.log('FILE WRITTEN: ', success)
+        //     })
+        //     .catch(err => {
+        //         console.log('File Write Error: ', err.message)
+        //     })
         // RNFS.readFile(image.uri, 'base64').then(res => {
 
         //     var newImageData = [...imageData]
