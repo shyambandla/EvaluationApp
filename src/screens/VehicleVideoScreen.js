@@ -83,7 +83,11 @@ const VehicleVideoScreen = ({ navigation }) => {
 
         const formData = new FormData();
         // re
-        formData.append('file', data);
+        formData.append('file', {
+            uri: data.uri,
+            type: data.type,
+            name: data.name
+        });
         // formData.append('videoFor', 'general');
         
       
