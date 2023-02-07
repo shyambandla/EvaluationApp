@@ -135,7 +135,16 @@ import {setRegistrationNo,setMake,setModel,setMfgYear,setMfgMonth,setVersion,set
 const CarBasicInputScreen = ({ navigation }) => {
     const token =useSelector(selectToken)
     const dispatch =useDispatch()
-
+    const {  RegistrationNo,
+    Make ,
+    Model ,
+    MfgYear ,
+    MfgMonth ,
+    Version ,
+    Color ,
+    NumberOfOwner ,
+    RegistrationDate ,
+    OdometerReading }=useSelector((state)=>state.basiCarDetailReducer)
     const [currentVersion, setCurrentVersion] = useState()
     const [selectedColor, setSelectedColor] = useState()
     const [registerNumberI, setRegisterNumberI] = useState('KA03AE7835')
@@ -269,6 +278,16 @@ const CarBasicInputScreen = ({ navigation }) => {
                         title="Add Stock"
                         borderRadius={12}
                         onPress={() =>{
+                            console.log( RegistrationNo,
+                                Make ,
+                                Model ,
+                                MfgYear ,
+                                MfgMonth ,
+                                Version ,
+                                Color ,
+                                NumberOfOwner ,
+                                RegistrationDate ,
+                                OdometerReading )
                             navigation.navigate('VehicleImagesScreen')}}
 
                     />

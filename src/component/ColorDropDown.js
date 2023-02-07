@@ -95,7 +95,7 @@ useEffect(() => {
                    
                     {
                      props.data !=undefined&& props.data.map((item) => {
-                           
+                          
                             return (
                                 // <Picker.Item label={item.name} value={`${item._id}|${item.name}`} />
                                 <Picker.Item label={item.name} value={item._id} />
