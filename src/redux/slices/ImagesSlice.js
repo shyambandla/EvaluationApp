@@ -121,4 +121,6 @@ export const { setImages,setUrl,setVideoUrl} = imagesSlice.actions;
 
 export const selectImages = (state) => state.images.images;
 
+export const selectVideoUrl = (state) => state.images.videoUrl;
+
 export default imagesSlice.reducer;

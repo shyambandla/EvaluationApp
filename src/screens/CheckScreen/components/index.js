@@ -8,6 +8,11 @@ import SimpleText from '../../../component/SimpleText'
 import { useSelector,useDispatch } from 'react-redux'
 import { selectToken } from '../../../redux/slices/MainSlice'
 import { addAnswer } from '../../../redux/slices/DataSlice'
+import { selectImages } from '../../../redux/slices/ImagesSlice'
+import { selectVideoUrl } from '../../../redux/slices/ImagesSlice'
+import {selectQuestions} from '../../../redux/slices/QuestionsSlice'
+import { selectAnswers } from '../../../redux/slices/DataSlice'
+
 const CheckComponent = ({
     route,
     navigation,
@@ -24,7 +29,7 @@ const CheckComponent = ({
 
     const token = useSelector(selectToken);
 
-    
+
 
     const sumbitEntry = () => {
         console.log("submit")

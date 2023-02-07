@@ -1,16 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-     RegistrationNo:"",
-     Make:"",
-     Model:"",
-     MfgYear:"",
-     MfgMonth:"",
-     Version:"",
-     Color:"",
-     NumberOfOwner:"",
-     RegistrationDate:"",
-     OdometerReading:"",
+    registrationNumber:"",
+     make:"",
+     model:"",
+     mfgYear:"",
+     mfgMonth:"",
+     version:"",
+     color:"",
+     numberOfOwners:"",
+     registrationDate:"",
+     odometerReading:"",
 };
 
 export const BasicCarDetailSlice = createSlice({
@@ -18,38 +18,50 @@ export const BasicCarDetailSlice = createSlice({
     initialState,
     reducers: {
         setRegistrationNo: (state, action) => {
-            state.RegistrationNo = action.payload;
+            state.registrationNumber = action.payload;
         },
         setMake: (state, action) => {
-            state.Make = action.payload;
+            state.make = action.payload;
         },
         setModel: (state, action) => {
-            state.Model = action.payload;
+            state.model = action.payload;
         },
         setMfgYear: (state, action) => {
-            state.MfgYear = action.payload;
+            state.mfgYear = action.payload;
         },
         setMfgMonth: (state, action) => {
-            state.MfgMonth = action.payload;
+            state.mfgMonth = action.payload;
         },
         setVersion: (state, action) => {
-            state.Version = action.payload;
+            state.version = action.payload;
         },
         setColor: (state, action) => {
-            state.Color = action.payload;
+            state.color = action.payload;
         },
         setNumberOfOwner: (state, action) => {
-            state.NumberOfOwner = action.payload;
+            state.numberOfOwners = action.payload;
         },
         setRegistrationDate: (state, action) => {
-            state.RegistrationDate = action.payload;
+            state.registrationDate = action.payload;
         },
         setOdometerReading: (state, action) => {
-            state.OdometerReading = action.payload;
+            state.odometerReading = action.payload;
         },
         
     },
 });
 
 export const {setRegistrationNo,setMake,setModel,setMfgYear,setMfgMonth,setVersion,setColor,setNumberOfOwner,setRegistrationDate,setOdometerReading} = BasicCarDetailSlice.actions;
+
+export const selectRegistrationNo = (state) => state.basicCarDetails.registrationNumber;
+export const selectMake = (state) => state.basicCarDetails.make;
+export const selectModel = (state) => state.basicCarDetails.model;
+export const selectMfgYear = (state) => state.basicCarDetails.mfgYear;
+export const selectMfgMonth = (state) => state.basicCarDetails.mfgMonth;
+export const selectVersion = (state) => state.basicCarDetails.version;
+export const selectColor = (state) => state.basicCarDetails.color;
+export const selectNumberOfOwner = (state) => state.basicCarDetails.numberOfOwners;
+export const selectRegistrationDate = (state) => state.basicCarDetails.registrationDate;
+export const selectOdometerReading = (state) => state.basicCarDetails.odometerReading;
+
 export default BasicCarDetailSlice.reducer;
