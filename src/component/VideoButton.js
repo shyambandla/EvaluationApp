@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useSelector,useDispatch } from 'react-redux';
 import { selectToken } from '../redux/slices/MainSlice';
 import { setVideoUrl } from '../redux/slices/ImagesSlice';
-export default VideoButton = async (setImageData, imageData, index,token,uploadFile) => {
+export default VideoButton = async (setImageData, imageData, index,token,uploadFile,saveVideoUrl) => {
     const options = {
         title: 'Select video',
         mediaType: 'video',
@@ -18,7 +18,7 @@ export default VideoButton = async (setImageData, imageData, index,token,uploadF
 
     };
 
-   const dispatch = useDispatch();
+//    const dispatch = useDispatch();
 
    
 
@@ -49,7 +49,8 @@ export default VideoButton = async (setImageData, imageData, index,token,uploadF
 
             const url=res.data[0]
             console.log("url", url);
-            dispatch(setVideoUrl(url))
+            saveVideoUrl(url)
+            // dispatch(setVideoUrl(url))
         }).catch(err => {
             console.log("err", err);
         })

@@ -10,13 +10,19 @@ import VehicaleVideoComponent from "../component/VehicaleVideoComponent"
 import Button from "../component/Button"
 import PlayButtonIcon from "../assets/svg/PlayButtonIcon"
 import VideoButton from "../component/VideoButton"
-import { useSelector } from "react-redux"
+import { useSelector,useDispatch } from "react-redux"
 import { selectToken } from "../redux/slices/MainSlice"
 import axios from "axios"
+import { setUrl } from "../redux/slices/ImagesSlice"
 const VehicleVideoScreen = ({ navigation }) => {
 
     const token = useSelector(selectToken);
 
+    const dispatch = useDispatch()
+
+    const saveVideoUrl = (url) => {
+        dispatch(setUrl(url))
+    }
     const [imageData, setImageData] = useState([
         {
             name: 'Front View',
@@ -153,7 +159,7 @@ const VehicleVideoScreen = ({ navigation }) => {
                             index={index}
                             isPlay
                             OnPlayPress={() => Linking.openURL('http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4')}
-                            VideoPress={() => { VideoButton(setImageData, imageData, index,token,uploadFile) }}
+                            VideoPress={() => { VideoButton(setImageData, imageData, index,token,uploadFile,saveVideoUrl) }}
                         />
 
 
