@@ -60,7 +60,7 @@ return finalResult;
                                 index: index,
                                 imageDatas: imageData,
                                 setImageDatas: setImageData,
-                                
+                                imageKey:Object.keys(images)[index]
 
                             })}
                             DeletePicture={() => {
