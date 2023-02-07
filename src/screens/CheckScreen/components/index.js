@@ -12,7 +12,8 @@ import { selectImages } from '../../../redux/slices/ImagesSlice'
 import { selectVideoUrl } from '../../../redux/slices/ImagesSlice'
 import {selectQuestions} from '../../../redux/slices/QuestionsSlice'
 import { selectAnswers } from '../../../redux/slices/DataSlice'
-
+import { selectMainId } from '../../../redux/slices/MainSlice'
+import { selectBasicCarDetails } from '../../../redux/slices/BasicCarDetailsSlice'
 const CheckComponent = ({
     route,
     navigation,
@@ -28,11 +29,59 @@ const CheckComponent = ({
    const dispatch = useDispatch()
 
     const token = useSelector(selectToken);
+    const images = useSelector(selectImages);
+    const videoUrl = useSelector(selectVideoUrl);
+    const questions = useSelector(selectQuestions);
+    const answers = useSelector(selectAnswers);
+    const mainId = useSelector(selectMainId);
+    const basicCarDetails = useSelector(selectBasicCarDetails);
 
+    const [reqBody, setReqBody] = useState({
+    })
+
+    useEffect(() => {
+        console.log("answers",answers)
+        console.log("questions",questions)
+        console.log("images",images)
+        console.log("videoUrl",videoUrl)
+        console.log("mainId",mainId)
+        const body={vehicleDetail:{
+            registrationNumber:basicCarDetails.registrationNumber,
+            registrationDate:basicCarDetails.registrationDate,
+            mfgYear:basicCarDetails.mfgYear,
+            mfgMonth:basicCarDetails.mfgMonth,
+            numberOfOwners:basicCarDetails.numberOfOwners,
+            chasisNumber:"",
+            engineNumber:"",
+        },
+        versionId:"",
+        colorId:"",
+        images:images,
+        details:[...answers],
+        inspectionVideo:videoUrl,
+
+        }
+
+        setReqBody(body)
+
+    }, [answers,questions,images,videoUrl,mainId])
 
 
     const sumbitEntry = () => {
         console.log("submit")
+        axios.put(`https://evaluationapi.riolabz.com/v1/inventory/${mainId}/inspection/agent`,reqBody, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        }).then((res) => {
+            console.log(res.data)
+        }
+        ).catch((err) => {
+            console.log(err)
+        }
+        );
+            
     }
 
 
