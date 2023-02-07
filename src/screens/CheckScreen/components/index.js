@@ -40,6 +40,7 @@ const CheckComponent = ({
     })
 
     useEffect(() => {
+        if(answers!=undefined&&images!=undefined&&videoUrl!=undefined&&mainId!=undefined&&basicCarDetails!=undefined){
         console.log("answers",answers)
         
         console.log("images",images)
@@ -63,7 +64,7 @@ const CheckComponent = ({
         }
 
         setReqBody(body)
-
+    }
     }, [answers,images,videoUrl,mainId,basicCarDetails])
 
 
