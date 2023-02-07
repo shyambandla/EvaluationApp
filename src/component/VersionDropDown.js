@@ -48,6 +48,7 @@ const VersionDropDown = (props) => {
                         console.log(">itemValueitemValue", itemValue);
                         setSelectedLanguage(itemValue)
                          props.setData(itemValue)
+                         props.setCurrentVersion(itemIndex)
                         setShowIosPicker(false)
                     }}
                     style={{
@@ -73,6 +74,7 @@ const VersionDropDown = (props) => {
                     onValueChange={(itemValue, itemIndex) => {
                         setSelectedLanguage(itemValue)
                          props.setData(itemValue)
+                         props.setCurrentVersion(itemIndex)
                         dispatch(setVersion(itemValue))
                     }}
                     style={{

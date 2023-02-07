@@ -136,6 +136,8 @@ const CarBasicInputScreen = ({ navigation }) => {
     const token =useSelector(selectToken)
     const dispatch =useDispatch()
 
+    const [currentVersion, setCurrentVersion] = useState()
+
     const [registerNumberI, setRegisterNumberI] = useState('KA03AE7835')
     const [make, setMake] = useState('Tata')
     const [model, setModel] = useState('Hexa 2016-2020 v')
@@ -190,12 +192,12 @@ const CarBasicInputScreen = ({ navigation }) => {
 
      useEffect(()=>{
       
-        if( versionData!==undefined&&selectedVersion!==undefined){
-            const colors = versionData.filter(data=>data._id === selectedVersion).colors
+        if( versionData!==undefined&&versionData.length>0&&currentVersion!==undefined){
+            const colors = versionData[currentVersion].colors
             setColorData(colors)
             console.log(colors,"colors")
         }
-     },[selectedVersion])
+     },[currentVersion])
 
      useEffect(()=>{
        
@@ -238,7 +240,7 @@ const CarBasicInputScreen = ({ navigation }) => {
                 
                 
                 <View style={{ marginTop: 12 }} />
-                <VersionDropDown title={'Version*'} data={versionData} setData={setSelectedVersion} />    
+                <VersionDropDown title={'Version*'} data={versionData} setCurrentVersion={setCurrentVersion} setData={setSelectedVersion} />    
                 <View style={{ marginTop: 12 }} />
             
              <ColorDropDown title={'Color*'} data={colorData} setData={setColorData} />
