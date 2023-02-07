@@ -28,7 +28,14 @@ const VehicleImagesScreen = ({ navigation }) => {
     const [imageData, setImageData] = useState([])
 
    
+    const convertCase = (str) => {
 
+
+const text = str;
+const result = text.replace(/([A-Z])/g, " $1");
+const finalResult = result.charAt(0).toUpperCase() + result.slice(1);
+console.log(finalResult);
+    }
 
 
     const InputDetailView = () => {
@@ -43,7 +50,7 @@ const VehicleImagesScreen = ({ navigation }) => {
                 renderItem={({ item, index }) => {
                     return (
                         <VehicaleImageComponent
-                            text={Object.keys(images)[index]}
+                            text={convertCase(Object.keys(images)[index])}
                             image={item.image}
                             index={index}
                             ImagePress={() => navigation.navigate("ImageUploadScreen", {
