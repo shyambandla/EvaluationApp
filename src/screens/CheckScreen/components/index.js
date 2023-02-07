@@ -22,6 +22,14 @@ const CheckComponent = ({
 
    const dispatch = useDispatch()
 
+    const token = useSelector(selectToken);
+
+    
+
+    const sumbitEntry = () => {
+        console.log("submit")
+    }
+
 
     return (
         <View style={{ flex: 1 }}>
@@ -87,7 +95,11 @@ const CheckComponent = ({
                     borderRadius={12}
                  onPress={() =>{
                     console.log(currentPage+1,steps[currentPage+1].title)
+                    if(currentPage+1==steps.length){
+                        sumbitEntry();
+                    }else{
                     setCurrentPage(currentPage+1)}}
+                 }
                 />
             </View>
 
