@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Keyboard } from "react-native";
 import { selectToken } from "../../../redux/slices/MainSlice";
+import { useDispatch, useSelector } from "react-redux";
 const CheckServiceComponent = ({ children, navigation, route }) => {
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 useEffect(() => {
