@@ -43,7 +43,7 @@ const VehicleImagesScreen = ({ navigation }) => {
                 renderItem={({ item, index }) => {
                     return (
                         <VehicaleImageComponent
-                            text={"test"}
+                            text={Object.keys(images)[index]}
                             image={item.image}
                             index={index}
                             ImagePress={() => navigation.navigate("ImageUploadScreen", {
