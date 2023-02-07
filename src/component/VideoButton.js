@@ -5,9 +5,9 @@ import { launchCamera, launchImageLibrary, } from 'react-native-image-picker';
 import ImgToBase64 from 'react-native-image-base64';
 import RNFS from 'react-native-fs';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import { selectToken } from '../redux/slices/MainSlice';
-
+import { setVideoUrl } from '../redux/slices/ImagesSlice';
 export default VideoButton = async (setImageData, imageData, index,token,uploadFile) => {
     const options = {
         title: 'Select video',
@@ -18,7 +18,7 @@ export default VideoButton = async (setImageData, imageData, index,token,uploadF
 
     };
 
-   
+   const dispatch = useDispatch();
 
    
 
@@ -47,6 +47,9 @@ export default VideoButton = async (setImageData, imageData, index,token,uploadF
         uploadFile(image).then(res => {
             console.log("res", res);
 
+            const url=res.data[0]
+            console.log("url", url);
+            dispatch(setVideoUrl(url))
         }).catch(err => {
             console.log("err", err);
         })

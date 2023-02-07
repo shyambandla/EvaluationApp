@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+    "videoUrl": "",
     "images": {
         "profile": {
           "image": "string",
@@ -109,11 +110,14 @@ export const imagesSlice = createSlice({
         setUrl: (state, action) => {
             state.images[action.payload.key].image = action.payload.value;
             console.log(state.images);
+        },
+        setVideoUrl: (state, action) => {
+            state.videoUrl = action.payload;
         }
     },
 });
 
-export const { setImages,setUrl} = imagesSlice.actions;
+export const { setImages,setUrl,setVideoUrl} = imagesSlice.actions;
 
 export const selectImages = (state) => state.images.images;
 
