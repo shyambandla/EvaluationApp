@@ -425,7 +425,7 @@ const [steps,setSteps]=React.useState([])
 
     useEffect(() => {
         if(steps.length>0&&currentPage<steps.length-1){
-            axios.get(`https://evaluationapi.riolabz.com/v1/inventory_question/fetch?catergoryIds=${steps[currentPage].id}`,{
+            axios.get(`https://evaluationapi.riolabz.com/v1/inventory_question/fetch?categoryIds=${steps[currentPage].id}`,{
                 headers:{
                     'Authorization': 'Bearer ' + token
                 }
