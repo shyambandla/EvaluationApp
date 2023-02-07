@@ -108,6 +108,7 @@ export const imagesSlice = createSlice({
         },
         setUrl: (state, action) => {
             state.images[action.payload.key].image = action.payload.value;
+            console.log(state.images);
         }
     },
 });
