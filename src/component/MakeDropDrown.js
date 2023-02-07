@@ -2,7 +2,7 @@ import { TextInput, View, StyleSheet, Text, TouchableOpacity, Platform } from "r
 import SimpleText from "./SimpleText"
 //import { Dropdown } from 'react-native-material-dropdown';
 import { Picker } from '@react-native-picker/picker';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DownArrow from "../assets/svg/DownArrow";
 
 
@@ -11,6 +11,16 @@ const MyDropDown = (props) => {
      const [selectedLanguage, setSelectedLanguage] = useState();
     const [showButton, setShowButton] = useState(Platform.OS == 'ios' ? true : false);
     const [showIosPicker, setShowIosPicker] = useState(false);
+
+
+    useEffect(() => {
+        console.log("props.data", props.data);
+        if (props.data != undefined) {
+            setSelectedLanguage(props.data[0]._id)
+            props.setData(props.data[0]._id)
+        }
+    }, [props.data])
+
 
     return (
         <View style={{ width: '100%' }}>

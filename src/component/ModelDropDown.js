@@ -12,6 +12,16 @@ const ModelDropDown = (props) => {
     const [showButton, setShowButton] = useState(Platform.OS == 'ios' ? true : false);
     const [showIosPicker, setShowIosPicker] = useState(false);
 
+    useEffect(() => {
+        console.log("props.data", props.data);
+        if (props.data != undefined) {
+            setSelectedLanguage(props.data[0]._id)
+            props.setData(props.data[0]._id)
+        }
+    }, [props.data])
+
+
+
     return (
         <View style={{ width: '40%' }}>
             <SimpleText
