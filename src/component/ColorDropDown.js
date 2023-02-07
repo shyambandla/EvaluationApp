@@ -12,6 +12,16 @@ const ColorDropDown = (props) => {
     const [selectedLanguage, setSelectedLanguage] = useState();
     const [showButton, setShowButton] = useState(Platform.OS == 'ios' ? true : false);
     const [showIosPicker, setShowIosPicker] = useState(false);
+
+
+useEffect(() => {
+        console.log("props.data", props.data);
+        if (props.data != undefined && props.data.length > 0) {
+            setSelectedLanguage(props.data[0]._id)
+            props.setData(props.data[0]._id)
+        }
+    }, [props.data])
+
     const dispatch = useDispatch()
     return (
         <View style={{ width: '40%' }}>
@@ -56,7 +66,7 @@ const ColorDropDown = (props) => {
                     {
                         props.data.map((item) => {
                             return (
-                                <Picker.Item label={item} value={item} />
+                                <Picker.Item label={item.name} value={item._id} />
 
                             )
                         })
@@ -84,7 +94,7 @@ const ColorDropDown = (props) => {
                     props.data.map((item) => {
                             
                             return (
-                                <Picker.Item label={item} value={item} />
+                                <Picker.Item label={item.name} value={item._id} />
 
                             )
                         })

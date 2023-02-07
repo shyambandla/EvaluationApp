@@ -159,7 +159,7 @@ const CarBasicInputScreen = ({ navigation }) => {
     const [modelData, setModelData] = useState([])
     const [versionData, setVersionData] = useState([])
     const [selectedYear, setSelectedYear] = useState('')
-    
+    const [colorData, setColorData] = useState([])
     
      useEffect(()=>{
         axios.get('https://evaluationapi.riolabz.com/v1/make/fetch',{ headers: {"Authorization" :`Bearer ${token}`}}).then((response)=>{     
@@ -189,13 +189,19 @@ const CarBasicInputScreen = ({ navigation }) => {
      },[selectedMake])
 
      useEffect(()=>{
+        if(selectedVersion.colors!==undefined){
+            setColorData(selectedVersion.colors)
+        }
+     },[selectedVersion])
+
+     useEffect(()=>{
        
         axios.get(`https://evaluationapi.riolabz.com/v1/version/fetch?modelIds=${selectedModel}`,{ headers: {"Authorization" :`Bearer ${token}`}}).then((response)=>{     
             const data = response.data.data
             setVersionData(data)
            
                 setSelectedVersion(data[0].id)
-            
+
             console.log(data,"version useEffect")
            }).catch((error)=>{
                console.log(error,"error version")
@@ -232,7 +238,7 @@ const CarBasicInputScreen = ({ navigation }) => {
                 <VersionDropDown title={'Version*'} data={versionData} setData={setSelectedVersion} />    
                 <View style={{ marginTop: 12 }} />
             
-             <ColorDropDown title={'Color*'} data={noOwners} setData={setNoOweners} />
+             <ColorDropDown title={'Color*'} data={colorData} setData={setNoOweners} />
 
                 <View style={{ marginTop: 12 }} />
             
