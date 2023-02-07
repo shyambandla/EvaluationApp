@@ -14,7 +14,7 @@ export const dataSlice = createSlice({
             state.answers = action.payload;
         },
         addAnswer: (state, action) => {
-            const index = state.answers.findIndex(item=>item.id === action.payload.id)
+            const index = state.answers.findIndex(item=>item.questionId === action.payload.questionId)
             if(index === -1){
                 state.answers.push(action.payload)
             }else{

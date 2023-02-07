@@ -10,7 +10,7 @@ import { selectToken } from '../../../redux/slices/MainSlice'
 import { addAnswer } from '../../../redux/slices/DataSlice'
 import { selectImages } from '../../../redux/slices/ImagesSlice'
 import { selectVideoUrl } from '../../../redux/slices/ImagesSlice'
-import {selectQuestions} from '../../../redux/slices/DataSlice'
+
 import { selectAnswers } from '../../../redux/slices/DataSlice'
 import { selectMainId } from '../../../redux/slices/MainSlice'
 import { selectBasicCarDetails } from '../../../redux/slices/BasicCarDetailsSlice'
@@ -31,7 +31,7 @@ const CheckComponent = ({
     const token = useSelector(selectToken);
     const images = useSelector(selectImages);
     const videoUrl = useSelector(selectVideoUrl);
-    const questions = useSelector(selectQuestions);
+   
     const answers = useSelector(selectAnswers);
     const mainId = useSelector(selectMainId);
     const basicCarDetails = useSelector(selectBasicCarDetails);
@@ -41,7 +41,7 @@ const CheckComponent = ({
 
     useEffect(() => {
         console.log("answers",answers)
-        console.log("questions",questions)
+        
         console.log("images",images)
         console.log("videoUrl",videoUrl)
         console.log("mainId",mainId)
@@ -64,7 +64,7 @@ const CheckComponent = ({
 
         setReqBody(body)
 
-    }, [answers,questions,images,videoUrl,mainId])
+    }, [answers,images,videoUrl,mainId,basicCarDetails])
 
 
     const sumbitEntry = () => {
@@ -116,7 +116,13 @@ const CheckComponent = ({
 
                                                         Value[index].selected = Buttonitem
                                                         setData(Value)
-                                                        dispatch(addAnswer(Value[index]))
+                                                        const answer={
+                                                            questionId:item.id,
+                                                            answer:Buttonitem,
+                                                            
+                                                            
+                                                        }
+                                                        dispatch(addAnswer(answer))
 
 
 
