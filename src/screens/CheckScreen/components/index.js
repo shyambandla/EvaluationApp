@@ -22,7 +22,7 @@ const CheckComponent = ({
     return (
         <View style={{ flex: 1 }}>
             <Header
-                title={steps[currentPage]}
+                title={steps[currentPage].title}
                 padding={Platform.OS == 'ios' ? 60 : 40}
                 onBackPress={() => navigation.goBack()}
             />
@@ -79,7 +79,7 @@ const CheckComponent = ({
                     title="Save"
                     borderRadius={12}
                  onPress={() =>{
-                    console.log(currentPage+1,steps[currentPage+1])
+                    console.log(currentPage+1,steps[currentPage+1].title)
                     setCurrentPage(currentPage+1)}}
                 />
             </View>

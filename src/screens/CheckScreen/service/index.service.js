@@ -9,7 +9,7 @@ useEffect(() => {
     console.log(route.params.page)
 },[])
 
-const [steps,setSteps]=React.useState(["Docomentation","Exterior - Front","Exterior - Back","Exterior - Right","Exterior - Other"])
+const [steps,setSteps]=React.useState([])
     const [currentPage,setCurrentPage]=React.useState(route.params.page)
 
 
@@ -419,30 +419,22 @@ const [steps,setSteps]=React.useState(["Docomentation","Exterior - Front","Exter
 
 
 
-    const [data, setData] = useState(steps[currentPage] == "Docomentation" ?
-        documentation : steps[currentPage] == "Exterior - Front" ?
-            exterior : steps[currentPage] == "Exterior - Back" ?
-                exteriorBack : steps[currentPage] == "Exterior - Right" ?
-                    exteriorRight : steps[currentPage] == "Exterior - Other" ?
-                        exteriorOther : steps[currentPage] == "Interior AC" ?
-                            interiorAc : steps[currentPage] == "Recommendation" ?
-                                recomendation : steps[currentPage] == "Exterior - Left" ?
-                                    exteriorLeft : steps[currentPage] == 'Interiors In Elevation' ? interiorEvaluation : [])
+    const [data, setData] = useState([])
 
     
 
-    useEffect(() => {
-        console.log('page changed', currentPage)
-        setData(steps[currentPage] == "Docomentation" ?
-        documentation : steps[currentPage] == "Exterior - Front" ?
-            exterior : steps[currentPage] == "Exterior - Back" ?
-                exteriorBack : steps[currentPage] == "Exterior - Right" ?
-                    exteriorRight : steps[currentPage] == "Exterior - Other" ?
-                        exteriorOther : steps[currentPage] == "Interior AC" ?
-                            interiorAc : steps[currentPage] == "Recommendation" ?
-                                recomendation : steps[currentPage] == "Exterior - Left" ?
-                                    exteriorLeft : steps[currentPage] == 'Interiors In Elevation' ? interiorEvaluation : [])
-    }, [currentPage])
+    // useEffect(() => {
+    //     console.log('page changed', currentPage)
+    //     setData(steps[currentPage] == "Docomentation" ?
+    //     documentation : steps[currentPage] == "Exterior - Front" ?
+    //         exterior : steps[currentPage] == "Exterior - Back" ?
+    //             exteriorBack : steps[currentPage] == "Exterior - Right" ?
+    //                 exteriorRight : steps[currentPage] == "Exterior - Other" ?
+    //                     exteriorOther : steps[currentPage] == "Interior AC" ?
+    //                         interiorAc : steps[currentPage] == "Recommendation" ?
+    //                             recomendation : steps[currentPage] == "Exterior - Left" ?
+    //                                 exteriorLeft : steps[currentPage] == 'Interiors In Elevation' ? interiorEvaluation : [])
+    // }, [currentPage])
 
 
     return children({
