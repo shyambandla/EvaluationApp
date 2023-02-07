@@ -1,5 +1,6 @@
 import axios from 'axios'
 import * as React from 'react'
+import { useEffect, useState } from 'react'
 import { FlatList, KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, TextInput, View, } from 'react-native'
 import Header from '../../../component/Header'
 import SelectButton from '../../../component/SelectButton'
