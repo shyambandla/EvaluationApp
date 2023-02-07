@@ -45,7 +45,7 @@ export default VideoButton = async (setImageData, imageData, index,token,uploadF
         //     }/${"attachment"}.mp4`;
         console.log("image.uriimage.uriimage.uriimage.uri", image.uri);
         uploadFile(image).then(res => {
-            console.log("res", res);
+            console.log("res", res.data);
 
             const url=res.data.data
             console.log("url", url);
