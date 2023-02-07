@@ -15,7 +15,13 @@ const VehicleImagesScreen = ({ navigation }) => {
 
 
     useEffect(() =>{
-        console.log(images)
+        const imgs=[]
+        for(let val of images){
+            imgs.push(val);
+
+        }
+        setImageData(imgs)
+
     },[images])
    
 
