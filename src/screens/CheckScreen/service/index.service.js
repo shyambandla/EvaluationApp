@@ -423,6 +423,32 @@ const [steps,setSteps]=React.useState([])
 
     
 
+    useEffect(() => {
+        if(steps.length>0&&currentPage<steps.length-1){
+            axios.get(`https://evaluationapi.riolabz.com/v1/inventory_question/fetch?catergoryIds=${steps[currentPage].id}`,{
+                headers:{
+                    'Authorization': 'Bearer ' + token
+                }
+            }).then((res)=>{
+                const datachoice=[];
+                res.data.data.map((item)=>{
+                    datachoice.push({
+                        title:item.name,
+                        buttonValues:item.choices.map((item)=>item.value),
+                        selected:""
+                    })
+                })
+                setData(datachoice)
+                
+            }
+            ).catch((err)=>{
+                console.log(err)
+                setData([])
+            }
+            )
+        }
+    }, [steps,currentPage])
+
     // useEffect(() => {
     //     console.log('page changed', currentPage)
     //     setData(steps[currentPage] == "Docomentation" ?
