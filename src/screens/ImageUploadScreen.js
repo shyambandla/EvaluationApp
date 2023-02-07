@@ -21,13 +21,18 @@ const ImageUploadScreen = ({ navigation, route }) => {
 
     const dispatch = useDispatch()
 
+    const [imageKey, setImageKey] = useState('')
+
 
     const [imageData, setImageData] = useState('')
-    const { index, setImageDatas, imageDatas,imageKey } = route.params
+    const { index, setImageDatas, imageDatas } = route.params
+
+
 
     useEffect(() => {
-
-    }, [imageData])
+        
+        setImageKey(Object.keys(imageDatas[index])[0])
+    }, [imageDatas])
     const InputDetailView = () => {
         const token = useSelector(selectToken)
 
