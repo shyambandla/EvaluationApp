@@ -1,3 +1,4 @@
+import axios from 'axios'
 import * as React from 'react'
 import { FlatList, KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, TextInput, View, } from 'react-native'
 import Header from '../../../component/Header'
@@ -16,7 +17,27 @@ const CheckComponent = ({
 }) => {
 
 
-    
+    useEffect(() => {
+        if(steps.length>0&&currentPage<steps.length-1){
+            axios.get(`https://evaluationapi.riolabz.com/v1/inventory_question/fetch?catergoryIds=${steps[currentPage].id}`,{
+                headers:{
+                    'Authorization': 'Bearer ' + token
+                }
+            }).then((res)=>{
+                const datachoice=[];
+                res.data.data.map((item)=>{
+                    datachoice.push({
+                        title:item.name,
+                        buttonValues:item.choices.map((item)=>item.value),
+                        selected:""
+                    })
+                })
+                setData(datachoice)
+                
+            }
+            )
+        }
+    }, [steps,currentPage])
 
 
     return (
