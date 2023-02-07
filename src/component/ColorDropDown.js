@@ -4,16 +4,17 @@ import SimpleText from "./SimpleText"
 import { Picker } from '@react-native-picker/picker';
 import { useState } from "react";
 import DownArrow from "../assets/svg/DownArrow";
+import { useDispatch, useSelector } from "react-redux"
+import {setRegistrationNo,setMake,setModel,setMfgYear,setMfgMonth,setVersion,setColor,setNumberOfOwner,setRegistrationDate,setOdometerReading} from '../redux/slices/BasicCarDetailsSlice';
 
+const ColorDropDown = (props) => {
 
-const MyDropDown = (props) => {
-
-     const [selectedLanguage, setSelectedLanguage] = useState();
+    const [selectedLanguage, setSelectedLanguage] = useState();
     const [showButton, setShowButton] = useState(Platform.OS == 'ios' ? true : false);
     const [showIosPicker, setShowIosPicker] = useState(false);
-
+    const dispatch = useDispatch()
     return (
-        <View style={{ width: '100%' }}>
+        <View style={{ width: '40%' }}>
             <SimpleText
                 text={props.title}
                 Style={{
@@ -30,7 +31,7 @@ const MyDropDown = (props) => {
                         justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center'
                     }} >
                     <SimpleText
-                        text={props.selecteddat}
+                        text={selectedLanguage}
                         Style={{
                             color: '#8A8A8A', marginBottom: 5,
                         }}
@@ -44,7 +45,7 @@ const MyDropDown = (props) => {
                     onValueChange={(itemValue, itemIndex) => {
                         console.log(">itemValueitemValue", itemValue);
                         setSelectedLanguage(itemValue)
-                         props.setData(itemValue)
+                        // props.setData(itemValue)
                         setShowIosPicker(false)
                     }}
                     style={{
@@ -52,12 +53,10 @@ const MyDropDown = (props) => {
                     }}
                     mode={'dropdown'}
                 >
-                   {
-                     props.data !=undefined&& props.data.map((item) => {
-                            
+                    {
+                        props.data.map((item) => {
                             return (
-                                // <Picker.Item label={item.name} value={`${item._id}|${item.name}`} />
-                                <Picker.Item label={item.name} value={item._id} />
+                                <Picker.Item label={item} value={item} />
 
                             )
                         })
@@ -67,12 +66,13 @@ const MyDropDown = (props) => {
                 </Picker>}
             </> :
                 <Picker
-
+              
                     selectedValue={selectedLanguage}
                     onValueChange={(itemValue, itemIndex) => {
                         setSelectedLanguage(itemValue)
-                         props.setData(itemValue)
-                         console.log(itemValue,"makevalue")
+                        // props.setData(itemValue)
+                        console.log(itemValue,"color data")
+                        dispatch(setColor(itemValue))
                     }}
                     style={{
                         //  width: "50%", backgroundColor: 'white'
@@ -81,11 +81,10 @@ const MyDropDown = (props) => {
                 >
                     
                     {
-                     props.data !=undefined&& props.data.map((item) => {
+                    props.data.map((item) => {
                             
                             return (
-                                // <Picker.Item label={item.name} value={`${item._id}|${item.name}`} />
-                                <Picker.Item label={item.name} value={item._id} />
+                                <Picker.Item label={item} value={item} />
 
                             )
                         })
@@ -102,4 +101,4 @@ const styles = StyleSheet.create({
         alignItems: "center"
     }
 });
-export default MyDropDown
+export default ColorDropDown

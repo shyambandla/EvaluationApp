@@ -4,14 +4,15 @@ import SimpleText from "./SimpleText"
 import { Picker } from '@react-native-picker/picker';
 import { useState } from "react";
 import DownArrow from "../assets/svg/DownArrow";
-
+import { useDispatch, useSelector } from "react-redux"
+import {setRegistrationNo,setMake,setModel,setMfgYear,setMfgMonth,setVersion,setColor,setNumberOfOwner,setRegistrationDate,setOdometerReading} from '../redux/slices/BasicCarDetailsSlice';
 
 const MfgYearDropdown = (props) => {
 
     const [selectedLanguage, setSelectedLanguage] = useState();
     const [showButton, setShowButton] = useState(Platform.OS == 'ios' ? true : false);
     const [showIosPicker, setShowIosPicker] = useState(false);
-
+    const dispatch =useDispatch()
     return (
         <View style={{ width: '40%' }}>
             <SimpleText
@@ -70,7 +71,7 @@ const MfgYearDropdown = (props) => {
                     onValueChange={(itemValue, itemIndex) => {
                         setSelectedLanguage(itemValue)
                         // props.setData(itemValue)
-                        console.log(itemValue,"sd data")
+                        dispatch(setMfgYear(itemValue))
                     }}
                     style={{
                         //  width: "50%", backgroundColor: 'white'

@@ -4,7 +4,7 @@ import { configureStore, applyMiddleware } from '@reduxjs/toolkit';
 // Add your reducers here
 import mainReducer from './slices/MainSlice';
 import dataReducer from './slices/DataSlice';
-import basiCarDetailReducer from './slices/BasicCarDetails';
+import basiCarDetailReducer from './slices/BasicCarDetailsSlice';
 const store = configureStore({
     reducer: {
         main: mainReducer,

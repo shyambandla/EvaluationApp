@@ -51,5 +51,5 @@ export const BasicCarDetailSlice = createSlice({
     },
 });
 
-export const { setAuthData} = BasicCarDetailSlice.actions;
+export const {setRegistrationNo,setMake,setModel,setMfgYear,setMfgMonth,setVersion,setColor,setNumberOfOwner,setRegistrationDate,setOdometerReading} = BasicCarDetailSlice.actions;
 export default BasicCarDetailSlice.reducer;
