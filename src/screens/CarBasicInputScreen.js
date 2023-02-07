@@ -137,7 +137,7 @@ const CarBasicInputScreen = ({ navigation }) => {
     const dispatch =useDispatch()
 
     const [currentVersion, setCurrentVersion] = useState()
-
+    const [selectedColor, setSelectedColor] = useState()
     const [registerNumberI, setRegisterNumberI] = useState('KA03AE7835')
     const [make, setMake] = useState('Tata')
     const [model, setModel] = useState('Hexa 2016-2020 v')
@@ -243,7 +243,7 @@ const CarBasicInputScreen = ({ navigation }) => {
                 <VersionDropDown title={'Version*'} data={versionData} setCurrentVersion={setCurrentVersion} setData={setSelectedVersion} />    
                 <View style={{ marginTop: 12 }} />
             
-             <ColorDropDown title={'Color*'} data={colorData} setData={setColorData} />
+             <ColorDropDown title={'Color*'} data={colorData} setData={setSelectedColor} />
 
                 <View style={{ marginTop: 12 }} />
             
