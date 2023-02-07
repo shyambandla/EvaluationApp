@@ -98,6 +98,8 @@ const VehicleVideoScreen = ({ navigation }) => {
                                 textColor={'black'}
                                 title="Add Stock"
                                 borderRadius={12}
+                        //   onPress={() => navigation.navigate('CheckScreen',{headerName:"Docomentation"})}
+                          onPress={() => navigation.navigate('CheckScreen',{page:0,headerName:"Docomentation"})}
                             />
                         </View>
                     )
@@ -108,7 +110,7 @@ const VehicleVideoScreen = ({ navigation }) => {
     return (
         <View style={{ flex: 1, }}>
             <Header
-                title={"Document Images"}
+                title={"Document Videos"}
                 onBackPress={() => navigation.goBack()}
             />
             <View style={{ height: "95%", marginHorizontal: 18, marginTop: -40, }}>

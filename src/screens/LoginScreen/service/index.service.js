@@ -31,7 +31,7 @@ const LoginServiceComponent = ({ children, navigation, route }) => {
                     // alert(res.data.message)
                     console.log(res.data)
                    dispatch(setAuthData(res.data.data))
-                   if(res.data.employeeType.name == 'INSPECTION'){
+                   if(res.data.data.employeeType.name == 'INSPECTION'){
                     navigation.navigate('InspectionScreen')
                    }else{
                     navigation.navigate('InspectionScreen')

@@ -110,10 +110,12 @@ const VehicleImagesScreen = ({ navigation }) => {
                     return (
                         <View style={{ marginTop: 57, marginBottom: 38 }}>
                             <Button
+                            
                                 backgroundColor="#FCD236"
                                 textColor={'black'}
                                 title="Add Stock"
                                 borderRadius={12}
+                                onPress={() => navigation.navigate('VehicleVideoScreen')}
                             />
                         </View>
                     )

@@ -144,7 +144,9 @@ const CarBasicInputScreen = ({ navigation }) => {
         '2010', '2011', '2012', '2013', '2014', '2015', '2016',
         '2017', '2018', '2019', '2020', '2021', '2022', '2023'])
     const [mfgMonth, setMfgMonth] = useState(['Jan', 'Feb', 'Mar', 'Apr', 'May', "Jun", 'Jul', "Aug", 'Sep', "Oct", 'Nov', 'Dec'])
+    const [noOwners,setNoOweners] =useState(['1st Owner','2nd Owner','3rd Owner','4th Owner','5th Owner','6th Owner','7th Owner'])
     const [makeData,setMakeData] = useState([])
+
     const [selectedMake, setSelectedMake] = useState('')
     const [selectedModel, setSelectedModel] = useState('')
     const [selectedVersion, setSelectedVersion] = useState('')
@@ -219,11 +221,9 @@ const CarBasicInputScreen = ({ navigation }) => {
                     textInputValue={color}
                 />
                 <View style={{ marginTop: 12 }} />
-                <InputDetail
-                    textInputTitle={'Number of Owner*'}
-                    textInputValueChange={(value) => { setOwnerNumber(value) }}
-                    textInputValue={ownerNumber}
-                />
+            
+                                    <MyDropDown title={'Number of Owner*'} data={noOwners} setData={setNoOweners} />
+
                 <View style={{ marginTop: 12 }} />
                 <InputDetail
                     textInputTitle={'Registration Date'}

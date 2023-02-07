@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Keyboard } from "react-native";
 const CheckServiceComponent = ({ children, navigation, route }) => {
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
-
+useEffect(() => {
+    console.log(route.params.page)
+},[])
     useEffect(() => {
         const keyboardDidShowListener = Keyboard.addListener(
             'keyboardDidShow',

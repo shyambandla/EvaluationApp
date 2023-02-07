@@ -7,10 +7,13 @@ const CheckComponent = ({
     route,
     navigation,
     data,
-    setData
-    , isKeyboardVisible
+    setData, 
+    isKeyboardVisible
 }) => {
 
+
+    const [steps,setSteps]=React.useState(["Docomentation","Exterior - Front","Exterior - Back","Exterior - Right","Exterior - Other"])
+    const [currentPage,setCurrentPage]=React.useState(route.params.page)
 
 
     return (
@@ -72,7 +75,7 @@ const CheckComponent = ({
                     textColor={'black'}
                     title="Save"
                     borderRadius={12}
-                // onPress={() => navigation.navigate('InspectionScreen')}
+                 onPress={() =>{ console.log(steps[route.params.page],route.params.page);navigation.navigate('CheckScreen',{page:currentPage+1,headerName:steps[currentPage+1]})}}
                 />
             </View>
 
