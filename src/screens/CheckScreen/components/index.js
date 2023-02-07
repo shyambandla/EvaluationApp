@@ -77,7 +77,7 @@ const CheckComponent = ({
         console.log("mainId",mainId)
         
         
-            console.log("answers",answers)
+            console.log("basiccard",basicCarDetails)
             
             console.log("images",images)
             console.log("videoUrl",videoUrl)
