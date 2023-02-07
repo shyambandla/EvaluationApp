@@ -22,7 +22,7 @@ const CheckComponent = ({
     return (
         <View style={{ flex: 1 }}>
             <Header
-                title={steps[currentPage].title}
+                title={steps.length>0?steps[currentPage].title:""}
                 padding={Platform.OS == 'ios' ? 60 : 40}
                 onBackPress={() => navigation.goBack()}
             />
