@@ -76,7 +76,7 @@ const CheckComponent = ({
         console.log("videoUrl",videoUrl)
         console.log("mainId",mainId)
         let body={}
-        if(answers!=undefined&&images!=undefined&&videoUrl!=undefined&&mainId!=undefined&&basicCarDetails!=undefined){
+        if(answers!=undefined&&images!=undefined&&mainId!=undefined&&basicCarDetails!=undefined){
             console.log("answers",answers)
             
             console.log("images",images)
