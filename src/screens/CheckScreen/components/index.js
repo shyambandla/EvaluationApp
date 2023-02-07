@@ -75,8 +75,8 @@ const CheckComponent = ({
         console.log("images",images)
         console.log("videoUrl",videoUrl)
         console.log("mainId",mainId)
-        let body={}
-        if(answers!=undefined&&images!=undefined&&mainId!=undefined&&basicCarDetails!=undefined){
+        
+        
             console.log("answers",answers)
             
             console.log("images",images)
@@ -100,7 +100,7 @@ const CheckComponent = ({
             }
     
             setReqBody(body)
-        }
+        
         console.log("reqBody",body)
 
         axios.put(`https://evaluationapi.riolabz.com/v1/inventory/${mainId}/inspection/agent`,body, {
