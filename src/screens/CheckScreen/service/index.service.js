@@ -1,5 +1,7 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Keyboard } from "react-native";
+import { selectToken } from "../../../redux/slices/MainSlice";
 const CheckServiceComponent = ({ children, navigation, route }) => {
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 useEffect(() => {
@@ -9,6 +11,37 @@ useEffect(() => {
 const [steps,setSteps]=React.useState(["Docomentation","Exterior - Front","Exterior - Back","Exterior - Right","Exterior - Other"])
     const [currentPage,setCurrentPage]=React.useState(route.params.page)
 
+
+
+    const token = useSelector(selectToken);
+
+
+
+    useEffect(() =>{
+        console.log(token)
+        if(token){
+            axios.get('https://evaluationapi.riolabz.com/v1/question_category/fetch',{
+                headers:{
+                    'Authorization':`Bearer ${token}`
+                }
+            }).then(response =>{
+                console.log(response.data)
+                if(response.status == 200){
+                    const categories = response.data.data.map((item,index) =>{
+                    
+                        return {
+                            title:item.name,
+                            id:item._id,
+                        }
+                    });
+                    setSteps(categories)
+                }
+            }).catch(error =>{
+                console.log(error)
+            }
+            )
+        }
+    },[token]);   
 
     useEffect(() => {
         const keyboardDidShowListener = Keyboard.addListener(

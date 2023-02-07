@@ -84,10 +84,10 @@ const VehicleVideoScreen = ({ navigation }) => {
         const formData = new FormData();
         // re
         formData.append('file', data);
-        formData.append('videoFor', 'general');
+        // formData.append('videoFor', 'general');
         
       
-       return axios.post('https://evaluationapi.riolabz.com/v1/filemanager/video/upload', formData, {
+       return axios.post('https://evaluationapi.riolabz.com/v1/filemanager/video/upload?videoFor=general', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': 'Bearer ' + token
