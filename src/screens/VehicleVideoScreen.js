@@ -13,7 +13,7 @@ import VideoButton from "../component/VideoButton"
 import { useSelector,useDispatch } from "react-redux"
 import { selectToken } from "../redux/slices/MainSlice"
 import axios from "axios"
-import { setUrl } from "../redux/slices/ImagesSlice"
+import { setUrl, setVideoUrl } from "../redux/slices/ImagesSlice"
 const VehicleVideoScreen = ({ navigation }) => {
 
     const token = useSelector(selectToken);
@@ -21,7 +21,11 @@ const VehicleVideoScreen = ({ navigation }) => {
     const dispatch = useDispatch()
 
     const saveVideoUrl = (url) => {
-        dispatch(setUrl(url))
+        dispatch(setVideoUrl(url))
+        setImageData([{
+            name: 'Inspection Video',
+            image: url
+        }])
     }
     const [imageData, setImageData] = useState([
         {

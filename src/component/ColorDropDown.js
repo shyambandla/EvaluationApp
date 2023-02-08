@@ -19,6 +19,7 @@ useEffect(() => {
         if (props.data != undefined && props.data.length > 0) {
             setSelectedLanguage(props.data[0]._id)
             props.setData(props.data[0]._id)
+            dispatch(setColor(props.data[0]._id))
         }
     }, [props.data])
 
@@ -57,7 +58,7 @@ useEffect(() => {
                         setSelectedLanguage(itemValue)
                          props.setData(itemValue)
                         setShowIosPicker(false)
-                        dispatch(setColor(props.data[itemIndex].name))
+                        dispatch(setColor(props.data[itemIndex]._id))
                     }}
                     style={{
                         marginTop: -40
@@ -85,7 +86,7 @@ useEffect(() => {
                         setSelectedLanguage(itemValue)
                          props.setData(itemValue)
                         console.log(itemValue,"color data")
-                        dispatch(setColor(props.data[itemIndex].name))
+                        dispatch(setColor(props.data[itemIndex]._id))
                     }}
                     style={{
                         //  width: "50%", backgroundColor: 'white'

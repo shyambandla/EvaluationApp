@@ -8,7 +8,7 @@ const initialState = {
      mfgMonth:"",
      version:"",
      color:"",
-     numberOfOwners:"",
+     numberOfOwners:0,
      registrationDate:"",
      odometerReading:"",
 };
@@ -27,7 +27,8 @@ export const BasicCarDetailSlice = createSlice({
             state.model = action.payload;
         },
         setMfgYear: (state, action) => {
-            state.mfgYear = action.payload;
+            const year=Number(action.payload)
+            state.mfgYear = year;
         },
         setMfgMonth: (state, action) => {
             state.mfgMonth = action.payload;
@@ -39,7 +40,7 @@ export const BasicCarDetailSlice = createSlice({
             state.color = action.payload;
         },
         setNumberOfOwner: (state, action) => {
-            state.numberOfOwners = action.payload;
+            state.numberOfOwners = Number(action.payload);
         },
         setRegistrationDate: (state, action) => {
             state.registrationDate = action.payload;
@@ -53,15 +54,15 @@ export const BasicCarDetailSlice = createSlice({
 
 export const {setRegistrationNo,setMake,setModel,setMfgYear,setMfgMonth,setVersion,setColor,setNumberOfOwner,setRegistrationDate,setOdometerReading} = BasicCarDetailSlice.actions;
 
-export const selectRegistrationNo = (state) => state.basicCarDetails.registrationNumber;
-export const selectMake = (state) => state.basicCarDetails.make;
-export const selectModel = (state) => state.basicCarDetails.model;
-export const selectMfgYear = (state) => state.basicCarDetails.mfgYear;
-export const selectMfgMonth = (state) => state.basicCarDetails.mfgMonth;
-export const selectVersion = (state) => state.basicCarDetails.version;
-export const selectColor = (state) => state.basicCarDetails.color;
-export const selectNumberOfOwner = (state) => state.basicCarDetails.numberOfOwners;
-export const selectRegistrationDate = (state) => state.basicCarDetails.registrationDate;
-export const selectOdometerReading = (state) => state.basicCarDetails.odometerReading;
-export const selectBasicCarDetails = (state) => state.basicCarDetails;
+export const selectRegistrationNo = (state) => state.basicCarDetail.registrationNumber;
+export const selectMake = (state) => state.basicCarDetail.make;
+export const selectModel = (state) => state.basicCarDetail.model;
+export const selectMfgYear = (state) => state.basicCarDetail.mfgYear;
+export const selectMfgMonth = (state) => state.basicCarDetail.mfgMonth;
+export const selectVersion = (state) => state.basicCarDetail.version;
+export const selectColor = (state) => state.basicCarDetail.color;
+export const selectNumberOfOwners = (state) => state.basicCarDetail.numberOfOwners;
+export const selectRegistrationDate = (state) => state.basicCarDetail.registrationDate;
+export const selectOdometerReading = (state) => state.basicCarDetail.odometerReading;
+export const selectBasicCarDetails = (state) => state.basicCarDetail;
 export default BasicCarDetailSlice.reducer;

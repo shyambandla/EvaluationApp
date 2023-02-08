@@ -14,6 +14,13 @@ import { selectVideoUrl } from '../../../redux/slices/ImagesSlice'
 import { selectAnswers } from '../../../redux/slices/DataSlice'
 import { selectMainId } from '../../../redux/slices/MainSlice'
 import { selectBasicCarDetails } from '../../../redux/slices/BasicCarDetailsSlice'
+import { selectRegistrationNo } from '../../../redux/slices/BasicCarDetailsSlice'
+import { selectRegistrationDate } from '../../../redux/slices/BasicCarDetailsSlice'
+import { selectMfgYear } from '../../../redux/slices/BasicCarDetailsSlice'
+import { selectMfgMonth } from '../../../redux/slices/BasicCarDetailsSlice'
+import { selectNumberOfOwners } from '../../../redux/slices/BasicCarDetailsSlice'
+import { selectVersion } from '../../../redux/slices/BasicCarDetailsSlice'
+import { selectColor } from '../../../redux/slices/BasicCarDetailsSlice'
 const CheckComponent = ({
     route,
     navigation,
@@ -35,6 +42,14 @@ const CheckComponent = ({
     const answers = useSelector(selectAnswers);
     const mainId = useSelector(selectMainId);
     const basicCarDetails = useSelector(selectBasicCarDetails);
+
+    const registrationNo = useSelector(selectRegistrationNo);
+    const registrationDate = useSelector(selectRegistrationDate);
+    const mfgYear = useSelector(selectMfgYear);
+    const mfgMonth = useSelector(selectMfgMonth);
+    const numberOfOwners = useSelector(selectNumberOfOwners);
+    const version = useSelector(selectVersion);
+    const color = useSelector(selectColor);
 
     const [reqBody, setReqBody] = useState({
     })
@@ -75,6 +90,7 @@ const CheckComponent = ({
         console.log("images",images)
         console.log("videoUrl",videoUrl)
         console.log("mainId",mainId)
+        console.log("color",color)
         
         
             console.log("basiccard",basicCarDetails)
@@ -83,16 +99,16 @@ const CheckComponent = ({
             console.log("videoUrl",videoUrl)
             console.log("mainId",mainId)
             const body={vehicleDetail:{
-                registrationNumber:basicCarDetails.registrationNumber,
-                registrationDate:basicCarDetails.registrationDate,
-                mfgYear:basicCarDetails.mfgYear,
-                mfgMonth:basicCarDetails.mfgMonth,
-                numberOfOwners:basicCarDetails.numberOfOwners,
+                registrationNumber:registrationNo,
+                registrationDate:registrationDate,
+                mfgYear:mfgYear,
+                mfgMonth:mfgMonth,
+                numberOfOwners:numberOfOwners,
                 chasisNumber:"",
                 engineNumber:"",
             },
-            versionId:"",
-            colorId:"",
+            versionId:version,
+            colorId:color,
             images:images,
             details:[...answers],
             inspectionVideo:videoUrl,
@@ -110,9 +126,11 @@ const CheckComponent = ({
             }
         }).then((res) => {
             console.log(res.data)
+            alert(`Entry Submitted Successfully ${res.data.data._id}`)
         }
         ).catch((err) => {
             console.log(err.response.data)
+            alert(err.response.data)
         }
         );
             

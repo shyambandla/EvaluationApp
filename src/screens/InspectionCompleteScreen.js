@@ -191,7 +191,7 @@ const InspectionCompleteScreen = ({ navigation }) => {
                                 <CarDescription
                                      onPressDetail={() => navigation.navigate("ViewCarDetailScreen")}
                                     // image={item.image}
-                                    image={item.model.image}
+                                     image={""}
                                     // name={item.name}
                                     name={item.assignedTo.name}
                                     // model={item.model}

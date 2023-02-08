@@ -73,7 +73,7 @@ const NoOfOwnersDropdown = (props) => {
                     onValueChange={(itemValue, itemIndex) => {
                         setSelectedLanguage(itemValue)
                         // props.setData(itemValue)
-                        dispatch(setNumberOfOwner(props.data[itemIndex]))
+                        dispatch(setNumberOfOwner(itemIndex))
 
                     }}
                     style={{

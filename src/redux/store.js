@@ -10,7 +10,7 @@ const store = configureStore({
     reducer: {
         main: mainReducer,
         data: dataReducer,
-        basiCarDetailReducer: basiCarDetailReducer,
+        basicCarDetail: basiCarDetailReducer,
         images: imagesReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({

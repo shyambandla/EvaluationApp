@@ -223,7 +223,7 @@ const InspectionCompleteScreen = ({ navigation }) => {
                                      time={new Date(item.createdAt).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
                                     userName={item.assignedTo.username}
                              
-                           // model={item.model.name}
+                        //    model={item.model.name}
                              
                                 //  carName={item.version.name}
                                  

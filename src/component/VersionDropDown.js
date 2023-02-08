@@ -75,7 +75,7 @@ const VersionDropDown = (props) => {
                         setSelectedLanguage(itemValue)
                          props.setData(itemValue)
                          props.setCurrentVersion(itemIndex)
-                        dispatch(setVersion(props.data[itemIndex].name))
+                        dispatch(setVersion(props.data[itemIndex]._id))
                     }}
                     style={{
                         //  width: "50%", backgroundColor: 'white'
