@@ -133,7 +133,8 @@ const ViewCarComponent = ({
 }) => {
     const mainId = useSelector(selectMainId);
     const token =useSelector(selectToken)
-    const [inventoryData,setInventoryData]=React.useState([])
+    const [inventoryData,setInventoryData]=React.useState()
+
     var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
@@ -155,25 +156,25 @@ const ViewCarComponent = ({
     const DetailCar = () => {
         
         return (
-          
             <>
             {
-          inventoryData ? <CarDetail
-             carName={inventoryData.model.name}
-             time={new Date(inventoryData.inspectionVenue.time).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
-               date={monthNames[new Date(inventoryData.inspectionVenue.date).getMonth()+1]+" "+new Date(inventoryData.inspectionVenue.date).getDate()+", "+days[new Date(inventoryData.inspectionVenue.date).getDay()] }
-               userName={inventoryData.lead.name}
-               location={inventoryData.inspectionVenue.location}
-          />:<></>           }
+    inventoryData && inventoryData !== undefined ?   <CarDetail
+    carName={inventoryData.model.name}
+     time={new Date(inventoryData.inspectionVenue.time).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}
+      date={monthNames[new Date(inventoryData.inspectionVenue.date).getMonth()+1]+" "+new Date(inventoryData.inspectionVenue.date).getDate()+", "+days[new Date(inventoryData.inspectionVenue.date).getDay()] }
+      userName={inventoryData.lead.name}
+      location={inventoryData.inspectionVenue.location}
+ /> :<></>
+           }
             </>
-          
+        
         )
     }
     const CarBasic = () => {
         return (
               <>
             {
-    inventoryData?   <BasicCarDetail
+    inventoryData && inventoryData !== undefined ?   <BasicCarDetail
           chassisNumber={inventoryData.details.chasisNumber}
           engineNumber={inventoryData.details.engineNumber}
      />:<></>
