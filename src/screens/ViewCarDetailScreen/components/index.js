@@ -125,7 +125,8 @@ import { selectMainId } from '../../../redux/slices/MainSlice'
 import { selectToken } from '../../../redux/slices/MainSlice'
 import axios from 'axios'
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setQcData } from '../../../redux/slices/BasicCarDetailsSlice'
 const ViewCarComponent = ({
     navigation,
     tabs
@@ -133,6 +134,7 @@ const ViewCarComponent = ({
 }) => {
     const mainId = useSelector(selectMainId);
     const token =useSelector(selectToken)
+    const dispatch =useDispatch()
     const [inventoryData,setInventoryData]=React.useState()
 
     var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -144,9 +146,9 @@ const ViewCarComponent = ({
         axios.get(`https://evaluationapi.riolabz.com/v1/inventory/${mainId}`,{ headers: {"Authorization" :`Bearer ${token}`}}).then((response)=>{     
        
         setInventoryData(response.data.data)
-        console.log(response.data.data,"data")
-        console.log(mainId,"mainid")
-     
+        console.log(response.data,"data")
+        dispatch(setQcData(response.data))
+        
        }).catch((error)=>{
            console.log(error)
        })
@@ -192,16 +194,11 @@ const ViewCarComponent = ({
                         <View style={{ paddingBottom: 10 }}>
                             <TouchableOpacity onPress={() => {
                                 if (item.name == "Document Images" || item.name == "Vehicle’s Images") {
-                                    navigation.navigate("VehicleImagesScreen", {
-
-                                    })
+                                    navigation.navigate("QcImages",)
 
                                 }
                                 else {
-                                    navigation.navigate("CheckScreen", {
-                                        headerName: item.name == 'Document'
-                                            ? "Docomentation" : item.name,
-                                    })
+                                    navigation.navigate("CheckScreen",{page:0})
                                 }
                             }}>
                                 <DisplayTabs

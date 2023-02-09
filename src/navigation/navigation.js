@@ -12,6 +12,9 @@ import CarBasicInputScreen from '../screens/CarBasicInputScreen'
 import ImageUploadScreen from '../screens/ImageUploadScreen';
 import VehicleImagesScreen from '../screens/VehicleImagesScreen'
 import VehicleVideoScreen from '../screens/VehicleVideoScreen'
+import QcImages from '../component/QcImages';
+import QcVideos from '../component/QcVideos';
+ 
 const Stack = createNativeStackNavigator();
 export default function Navigation(props) {
     return (
@@ -21,6 +24,7 @@ export default function Navigation(props) {
 
             >
 
+            {/* <Stack.Screen name="LoginScreen" component={ InspectBasicCarDetail} /> */}
 
                 <Stack.Screen name="LoginScreen" component={LoginScreen} />
                 <Stack.Screen name="InspectionScreen" component={InspectionScreen} />
@@ -32,6 +36,9 @@ export default function Navigation(props) {
                 <Stack.Screen name="CheckScreen" component={CheckScreen} />
                 <Stack.Screen name="InspectBasicCarDetail" component={InspectBasicCarDetail} />
                 <Stack.Screen name="ImageUploadScreen" component={ImageUploadScreen} />
+                <Stack.Screen name="QcImages" component={QcImages} />
+               
+                <Stack.Screen name="QcVideos" component={QcVideos} />
                 <Stack.Screen name="VehicleVideoScreen" component={VehicleVideoScreen} />
 
             </Stack.Navigator>

@@ -119,7 +119,7 @@ import { ScrollView, View } from "react-native"
 import Header from "../component/Header"
 import InputDetail from '../component/InputDetail'
 import Button from "../component/Button"
-import MyDropDown from "../component/MyDropDown"
+ 
 import MakeDropDown from "../component/MakeDropDrown"
 import ModelDropDown from "../component/ModelDropDown"
 import VersionDropDown from "../component/VersionDropDown"

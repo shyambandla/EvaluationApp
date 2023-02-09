@@ -142,6 +142,7 @@ const InspectionCompleteScreen = ({ navigation }) => {
 
     const [suggestionlocation, setSuggestionLocation] = useState(["B1 Yard", "B1 Yard",])
     const [location, setLocation] = useState("B1 Yard")
+
     var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
@@ -180,6 +181,7 @@ const InspectionCompleteScreen = ({ navigation }) => {
                 setSuggestionLocation={setSuggestionLocation}
                 location={location}
                 setLocation={setLocation}
+                setFilterCarDetails={setCarDetails}
             />
             <View style={{ flex: 1, paddingHorizontal: 12, marginTop: -40, paddingBottom: 20, }}>
                 <FlatList
