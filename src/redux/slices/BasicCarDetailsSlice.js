@@ -11,6 +11,8 @@ const initialState = {
      numberOfOwners:0,
      registrationDate:"",
      odometerReading:"",
+     chassisNumber:"",
+     engineNumber:"",
 };
 
 export const BasicCarDetailSlice = createSlice({
@@ -48,11 +50,18 @@ export const BasicCarDetailSlice = createSlice({
         setOdometerReading: (state, action) => {
             state.odometerReading = action.payload;
         },
+        setChassisNumber: (state, action) => {
+            state.chassisNumber = action.payload;
+        },
+       setEngineNumber: (state, action) => {
+            state.engineNumber = action.payload;
+        },
         
     },
 });
 
-export const {setRegistrationNo,setMake,setModel,setMfgYear,setMfgMonth,setVersion,setColor,setNumberOfOwner,setRegistrationDate,setOdometerReading} = BasicCarDetailSlice.actions;
+export const {setRegistrationNo,setMake,setModel,setMfgYear,setMfgMonth,setVersion,setColor,setNumberOfOwner,setRegistrationDate,setOdometerReading,setChassisNumber,setEngineNumber} = BasicCarDetailSlice.actions;
+ 
 
 export const selectRegistrationNo = (state) => state.basicCarDetail.registrationNumber;
 export const selectMake = (state) => state.basicCarDetail.make;
@@ -64,5 +73,8 @@ export const selectColor = (state) => state.basicCarDetail.color;
 export const selectNumberOfOwners = (state) => state.basicCarDetail.numberOfOwners;
 export const selectRegistrationDate = (state) => state.basicCarDetail.registrationDate;
 export const selectOdometerReading = (state) => state.basicCarDetail.odometerReading;
+export const selectEngineNumber = (state) => state.basicCarDetail.engineNumber;
+export const selectChassisNumber = (state) => state.basicCarDetail.chassisNumber;
+
 export const selectBasicCarDetails = (state) => state.basicCarDetail;
 export default BasicCarDetailSlice.reducer;

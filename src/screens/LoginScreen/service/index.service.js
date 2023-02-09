@@ -28,14 +28,15 @@ const LoginServiceComponent = ({ children, navigation, route }) => {
             }).then((res) => {
                 
                 if (res.status == 200) {
-                    // alert(res.data.message)
+             
                     console.log(res.data)
                    dispatch(setAuthData(res.data.data))
-                   if(res.data.data.employeeType.name == 'INSPECTION'){
-                    navigation.navigate('InspectionScreen')
-                   }else{
-                    navigation.navigate('InspectionScreen')
-                   }
+                   navigation.navigate('InspectionScreen')
+                //    if(res.data.data.employeeType.name == 'INSPECTION'){
+                //     navigation.navigate('InspectionScreen')
+                //    }else{
+                //     navigation.navigate('ViewCarDetailScreen')
+                //    }
                  
                 }
              

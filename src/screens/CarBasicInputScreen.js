@@ -133,9 +133,12 @@ import { useDispatch, useSelector } from "react-redux"
 import {setRegistrationNo,setMake,setModel,setMfgYear,setMfgMonth,setVersion,setColor,setNumberOfOwner,setRegistrationDate,setOdometerReading} from '../redux/slices/BasicCarDetailsSlice';
 
 const CarBasicInputScreen = ({ navigation }) => {
+    
+
+   
     const token =useSelector(selectToken)
     const dispatch =useDispatch()
-    
+   
     const [currentVersion, setCurrentVersion] = useState()
     const [selectedColor, setSelectedColor] = useState()
     const [registerNumberI, setRegisterNumberI] = useState('KA03AE7835')
@@ -269,7 +272,7 @@ const CarBasicInputScreen = ({ navigation }) => {
                         title="Add Stock"
                         borderRadius={12}
                         onPress={() =>{
-                            
+                          //  console.log(selector,"selected data")
                             navigation.navigate('VehicleImagesScreen')}}
 
                     />

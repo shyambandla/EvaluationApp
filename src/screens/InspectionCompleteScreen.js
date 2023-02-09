@@ -109,12 +109,14 @@ import Header from "../component/Header"
 import Tabs from "../component/Tabs"
 import { LoginPicture } from "../constants/Images"
 import { selectToken } from "../redux/slices/MainSlice"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { setMainId } from "../redux/slices/MainSlice"
 
 import axios from "axios"
 
 const InspectionCompleteScreen = ({ navigation }) => {
     const token =useSelector(selectToken)
+    const dispatch = useDispatch()
 
     const [carDetails, setCarDetails] = useState([{
         image: 'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=600',
@@ -146,7 +148,7 @@ const InspectionCompleteScreen = ({ navigation }) => {
   ];
 
     useEffect(()=>{
-        axios.get('https://evaluationapi.riolabz.com/v1/inventory/fetch?status=Pending&sort=Ascending',{ headers: {"Authorization" :`Bearer ${token}`}}).then((response)=>{
+        axios.get('https://evaluationapi.riolabz.com/v1/inventory/fetch?status=Verified',{ headers: {"Authorization" :`Bearer ${token}`}}).then((response)=>{
         console.log(response.data.data)
          setCarDetails(response.data.data)
         }).catch((error)=>{
@@ -189,16 +191,16 @@ const InspectionCompleteScreen = ({ navigation }) => {
                          }else{
                             return (<>
                                 <CarDescription
-                                     onPressDetail={() => navigation.navigate("ViewCarDetailScreen")}
-                                    // image={item.image}
-                                     image={""}
-                                    // name={item.name}
-                                    name={item.assignedTo.name}
-                                    // model={item.model}
-                                    model={item.model.name}
-                                    // time={item.time}
+                                     onPressDetail={() =>{dispatch(setMainId(item._id)) ;navigation.navigate("ViewCarDetailScreen")}}
+                                   
+                                     image={item.vehicleImages.profile.image}
+                               
+                                     name={"item.assignedTo.name"}
+                                   
+                                     model={"item.model.name"}
+                            
                                     time={new Date(item.createdAt).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })+' '+days[new Date(item.createdAt).getDay()] +", "+monthNames[new Date(item.createdAt).getMonth()+1]+" "+new Date(item.createdAt).getDate()}
-                                    // status={item.status}
+                                   
                                     status={item.status}
                                 />
                                 <View style={{ marginBottom: 12 }} />
