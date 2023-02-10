@@ -10,7 +10,7 @@ useEffect(() => {
 },[])
 
 const [steps,setSteps]=React.useState([])
-    const [currentPage,setCurrentPage]=React.useState(route.params.page)
+const [currentPage,setCurrentPage]=React.useState(route.params.page)
 
 
 
@@ -91,6 +91,8 @@ const [steps,setSteps]=React.useState([])
                     })
                 })
                 setData(datachoice)
+
+                console.log(res,"c dataddddddddd")
                 
             }
             ).catch((err)=>{
@@ -100,6 +102,10 @@ const [steps,setSteps]=React.useState([])
             )
         }
     }, [steps,currentPage])
+
+  
+     
+
 
     // useEffect(() => {
     //     console.log('page changed', currentPage)

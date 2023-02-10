@@ -127,6 +127,7 @@ import axios from 'axios'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { setQcData } from '../../../redux/slices/BasicCarDetailsSlice'
+import { addAnswer } from '../../../redux/slices/DataSlice'
 const ViewCarComponent = ({
     navigation,
     tabs
@@ -146,8 +147,10 @@ const ViewCarComponent = ({
         axios.get(`https://evaluationapi.riolabz.com/v1/inventory/${mainId}`,{ headers: {"Authorization" :`Bearer ${token}`}}).then((response)=>{     
        
         setInventoryData(response.data.data)
+
         console.log(response.data,"data")
         dispatch(setQcData(response.data))
+        dispatch(addAnswer(response.data.data.inspectionDetails))
         
        }).catch((error)=>{
            console.log(error)
